@@ -8,9 +8,9 @@
 -->
 ### 练习用贪吃蛇TS版
 
-![](/demo.png)
+![](./demo.png)
 
-![](/demo2.png)
+![](./demo2.png)
 
 ## swancai
 
