@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-14 21:56:08
- * @LastEditTime: 2022-04-14 21:56:10
+ * @LastEditTime: 2022-04-15 11:02:22
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/webpack.config.js
