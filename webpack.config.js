@@ -121,9 +121,35 @@ const config = {
                             }
                         }
                     },
-                    'less-loader'
+                    'less-loader',
                 ]
-            }
+            },
+            // 设置sass文件处理
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    // 引入postcss
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            postcssOptions: {
+                                plugins: [
+                                    [
+                                        'postcss-preset-env',
+                                        {
+                                            browsers: 'last 2 versions'
+                                        }
+                                    ]
+                                ]
+                            }
+                        }
+                    },
+                    // 将 Sass 编译成 CSS
+                    'sass-loader',
+                ]
+            },
         ]
     },
     // 设置哪些文件可以用于引用模块
@@ -133,7 +159,14 @@ const config = {
     // 配置webpack插件
     plugins: [
         new CleanWebpackPlugin(),
-        new HTMLWebpackPlugin()
+        new HTMLWebpackPlugin({
+            title: 'Snake Ts',
+            // filename: './dist/index.html', // 配置生成的HTML文件名称
+            template: './src/index.html', // 生成HTML文件所需要的模板文件
+            minify: {
+                removeComments: true, // 打包后移除html文件中的注释
+            }
+        })
     ]
 };
 

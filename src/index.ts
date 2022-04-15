@@ -7,6 +7,9 @@
  * @FilePath: /snake-ts/src/index.ts
  */
 
+import './scss/base.scss'
+import './scss/wrap.scss'
+
 const sum = (a: number, b: number): number => a + b
 
 console.log(sum(123, 456))
