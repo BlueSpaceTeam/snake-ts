@@ -7,6 +7,8 @@
  * @FilePath: /snake-ts/src/index.ts
  */
 
+import './scss/base.scss'
+import './scss/wrap.scss'
 import './index.less'
 
 const sum = (a: number, b: number): number => a + b

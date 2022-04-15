@@ -1,0 +1,33 @@
+$main-color: #000;
+.wrapper {
+    margin: 20px auto;
+    width: 750px;
+    border: 6px solid $main-color;
+    background-color: #abcb9b;
+    border-radius: 20px;
+}
+
+.move-area {
+    box-sizing: content-box;
+    margin: 20px auto 0;
+    border: 3px solid $main-color;
+    width: 700px;
+    height: 500px;
+}
+
+.score-board {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: 0 40px;
+    font-size: 30px;
+    font-family: 'Pangolin', 'Comic Sans MS';
+
+    .grid {
+        max-width: 48%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
