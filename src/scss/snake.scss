@@ -10,71 +10,57 @@
     position: relative;
 }
 
+
+// common 每一节
+.section {
+    position: absolute;
+    padding: 1px;
+
+    .bone {
+        box-sizing      : border-box;
+        width           : 9px;
+        height          : 9px;
+        border          : 1px solid $main-color;
+        display         : flex;
+        justify-content : center;
+        align-items     : center;
+
+        &::before {
+            content         : '';
+            width           : 6px;
+            height          : 6px;
+            background-color: $main-color;
+        }
+    }
+}
+
+// 蛇
+#snake,
+#food {
+    position: absolute;
+}
+
 // 蛇
 #snake {
-    position: absolute;
-
-    // 蛇的每一节
-    .section {
-        position: absolute;
-        padding: 1px;
-
+    // 蛇头
+    .section:first-child {
         .bone {
-            box-sizing      : border-box;
-            width           : 9px;
-            height          : 9px;
-            border          : 1px solid $main-color;
-            display         : flex;
-            justify-content : center;
-            align-items     : center;
+            justify-content : space-around;
+            align-items: flex-start;
+            padding-top: 1px;
 
-            &::before {
+            &::before,
+            &::after {
                 content         : '';
-                width           : 6px;
-                height          : 6px;
+                width           : 2px;
+                height          : 2px;
                 background-color: $main-color;
-            }
-        }
-        
-        // 蛇头
-        &:first-child {
-            .bone {
-                justify-content : space-around;
-                align-items: flex-start;
-
-                &::before,
-                &::after {
-                    content         : '';
-                    width           : 2px;
-                    height          : 2px;
-                    background-color: $main-color;
-                }
             }
         }
     }
 }
 
-// 食物
 #food {
-    position: absolute;
-
-    // 临时坐标，后面要删除
-    left: 40px;
-    top : 100px;
-
-    // 沿用蛇身样式，可后续进行区别优化
-    width           : 10px;
-    height          : 10px;
-    background-color: $main-color;
-    border          : 1px solid $bg-color;
-    display         : flex;
-    justify-content : center;
-    align-items     : center;
-
-    &>div {
-        width           : 6px;
-        height          : 6px;
-        background-color: $main-color;
-        border          : 1px solid $bg-color;
-    }
+    left: 100px;
+    top: 100px;
 }
