@@ -1,6 +1,20 @@
 @import './wrap.scss';
 
+.move-area {
+    box-sizing: content-box;
+    margin    : 20px auto 0;
+    border    : 3px solid $main-color;
+    width     : 700px;
+    height    : 500px;
+
+    position: relative;
+}
+
+// 蛇
 #snake {
+    position: absolute;
+
+    // 蛇的每一节
     &>div {
         width           : 10px;
         height          : 10px;
@@ -16,6 +30,7 @@
         }
     }
 
+    // 蛇头
     &>div:first-child {
         width           : 6px;
         height          : 6px;
@@ -29,5 +44,28 @@
             background-color: $main-color;
             border          : 1px solid $bg-color;
         }
+    }
+}
+
+// 食物
+#food {
+    position: absolute;
+
+    // 临时坐标，后面要删除
+    left            : 40px;
+    top             : 100px;
+
+    // 沿用蛇身样式，可后续进行区别优化
+    width           : 10px;
+    height          : 10px;
+    margin          : 1px;
+    background-color: $bg-color;
+    border          : 1px solid $main-color;
+
+    &>div {
+        width           : 6px;
+        height          : 6px;
+        background-color: $main-color;
+        border          : 2px solid $bg-color;
     }
 }
