@@ -1,0 +1,33 @@
+@import './wrap.scss';
+
+#snake {
+    &>div {
+        width           : 10px;
+        height          : 10px;
+        margin          : 1px;
+        background-color: $bg-color;
+        border          : 1px solid $main-color;
+
+        &>div {
+            width           : 6px;
+            height          : 6px;
+            background-color: $main-color;
+            border          : 2px solid $bg-color;
+        }
+    }
+
+    &>div:first-child {
+        width           : 6px;
+        height          : 6px;
+        margin          : 1px;
+        background-color: $bg-color;
+        border          : 3px solid $main-color;
+
+        &>div {
+            width           : 4px;
+            height          : 4px;
+            background-color: $main-color;
+            border          : 1px solid $bg-color;
+        }
+    }
+}

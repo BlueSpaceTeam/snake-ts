@@ -1,17 +1,42 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Snake Ts</title>
-    </head>
 
-    <body>
-        <div class="wrapper">
-            <div class="move-area"></div>
-            <div class="score-board">
-                <div class="grid">SCORE: <span id="score">0</span></div>
-                <div class="grid">LEVEL: <span id="rank">A</span></div>
+<head>
+    <meta charset="utf-8">
+    <title>Snake Ts</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="move-area">
+            <!-- 蛇 -->
+            <div id="snake">
+                <!-- 每个一级div表示蛇的每一节 -->
+                <div>
+                    <div></div>
+                </div>
+                <div>
+                    <div></div>
+                </div>
+                <div>
+                    <div></div>
+                </div>
+                <div>
+                    <div></div>
+                </div>
+                <div>
+                    <div></div>
+                </div>
+                <div>
+                    <div></div>
+                </div>
             </div>
         </div>
-    </body>
+        <div class="score-board">
+            <div class="grid">SCORE: <span id="score">0</span></div>
+            <div class="grid">LEVEL: <span id="rank">A</span></div>
+        </div>
+    </div>
+</body>
+
 </html>

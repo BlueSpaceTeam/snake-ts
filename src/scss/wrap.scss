@@ -1,9 +1,11 @@
 $main-color: #000;
+$bg-color: #abcb9b;
+
 .wrapper {
     margin: 20px auto;
     width: 750px;
     border: 6px solid $main-color;
-    background-color: #abcb9b;
+    background-color: $bg-color;
     border-radius: 20px;
 }
 
