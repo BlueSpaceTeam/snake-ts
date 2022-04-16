@@ -14,22 +14,22 @@ export class ScoreBoard {
 	isDeBug: boolean = false // 是否debug模式
 
 	get score () { 
-		return Number((document.getElementById('score') as HTMLSpanElement).innerText) || 0
+		return Number((document.getElementById('score') as HTMLElement).innerText) || 0
 	}
 	set score (newVal: number) {
-		(document.getElementById('score') as HTMLSpanElement).innerText = newVal + ''
+		(document.getElementById('score') as HTMLElement).innerText = newVal + ''
 		this.handleRankMap(newVal)
 	}
 
 	get rank () {
-		return (document.getElementById('rank') as HTMLSpanElement).innerText
+		return (document.getElementById('rank') as HTMLElement).innerText
 	}
 
 	set rank (newVal) {
-		(document.getElementById('rank') as HTMLSpanElement).innerText = newVal
+		(document.getElementById('rank') as HTMLElement).innerText = newVal
 	}
 
-	handleRankMap (score: number = 0): void { // 处理等级规则
+	private handleRankMap (score: number = 0): void { // 处理等级规则
 		this.isDeBug && console.log('map score = ', score)
 		for (let i: number = 0; i < maxRangeNums.length; i++) {
 			if (score <= maxRangeNums[i]) { // 在当前范围内，映射成字符
@@ -42,7 +42,7 @@ export class ScoreBoard {
 		}
 	}
 
-	addScore (score: number = 0): void {
+	addScore (score: number = 0): void { // 每吃一个食物，加分操作
 		this.score += score;
 	}
 }
