@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-14 22:01:46
- * @LastEditTime: 2022-04-16 15:27:58
+ * @LastEditTime: 2022-04-16 15:34:38
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/index.ts
@@ -17,10 +17,8 @@ new Controller()
 // // 调用展示-TODEL
 // const scoreBoardObj = new ScoreBoard()
 // setTimeout(() => {
-//     scoreBoardObj.addScore(11)
-//     console.log(scoreBoardObj.rank)
+//     scoreBoardObj.totalScore = 21
 // }, 5000)
-
 
 // // 测试，可删
 // const food = new Food()
