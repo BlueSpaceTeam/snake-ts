@@ -1,48 +1,46 @@
 /**
  * 等级规则：
- * 0-10，11-30,31-60，61-100，101-150,151-210
- * 最后一个数为：10,30,60,100,150,210,....n*(n+1)*5
- * 对应序列：	  1，2，3，4，5，6,....n
- * 对应字母：	  A，B，C，D，E，F,...Z(最大)-26
- * 对应ASCII码： 65，66，...........132
- * 综上，最大等级对应数 87780，大于这个数都计为Z+
+ * 等级从最小到最大分别为：A，B，C，D，E，F,...Z, Z+
+ * 每 2分 升一个等级，(对应属性deltaScore)
  * */
 
-const maxRangeNums = Array(26).fill(0).map((n, idx) => (idx + 1)*(idx + 2)*5)
+export default class ScoreBoard {
+	private _totalScore: number = 0 // 总分
+	private _rank: string = 'A' // 等级
 
-export class ScoreBoard {
-	isDeBug: boolean = false // 是否debug模式
+	elScore: HTMLElement = document.getElementById('score') as HTMLElement // 总分元素Dom对象
+	elRank: HTMLElement = document.getElementById('rank') as HTMLElement// 等级元素Dom对象
 
-	get score () { 
-		return Number((document.getElementById('score') as HTMLElement).innerText) || 0
+	deltaScore: number = 2 // 等差数列中的公差
+
+	get totalScore (): number { // 获取总分
+		return this._totalScore
 	}
-	set score (newVal: number) {
-		(document.getElementById('score') as HTMLElement).innerText = newVal + ''
+	set totalScore (newVal: number) { // 设置总分
+		this._totalScore = newVal
+		this.elScore.innerText = newVal + ''
 		this.handleRankMap(newVal)
 	}
 
-	get rank () {
-		return (document.getElementById('rank') as HTMLElement).innerText
+	get rank (): string { // 获取等级
+		// return this.elRank.innerText
+		return this._rank
 	}
 
-	set rank (newVal) {
-		(document.getElementById('rank') as HTMLElement).innerText = newVal
+	set rank (newVal) { // 设置等级
+		this.elRank.innerText = newVal
+		this._rank = newVal
 	}
 
-	private handleRankMap (score: number = 0): void { // 处理等级规则
-		this.isDeBug && console.log('map score = ', score)
-		for (let i: number = 0; i < maxRangeNums.length; i++) {
-			if (score <= maxRangeNums[i]) { // 在当前范围内，映射成字符
+	private handleRankMap (totalScore: number = 0): void { // 处理等级规则
+		const { deltaScore } = this
+		for (let i: number = 0; i <= 26; i++) {
+			if (totalScore <= (i + 1) * deltaScore) { // 在当前范围内，映射成字符
 				this.rank = String.fromCharCode(i + 65)
 				break
-			} else if (i + 1 === maxRangeNums.length) {
+			} else if (i + 1 === 26) {
 				this.rank = 'Z+'
-				break
 			}
 		}
-	}
-
-	addScore (score: number = 0): void { // 每吃一个食物，加分操作
-		this.score += score;
 	}
 }
