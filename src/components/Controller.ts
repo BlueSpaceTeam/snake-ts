@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-16 15:15:45
- * @LastEditTime: 2022-04-16 16:58:44
+ * @LastEditTime: 2022-04-16 18:20:49
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/components/Controller.ts
@@ -17,7 +17,10 @@ class Controller {
     scoreBoard: ScoreBoard
 
     // 移动方向（keydown的值，默认一开始向右移动）
-    direction: string = 'ArrowRight'
+    direction: string = ''
+
+    // 游戏是否结束
+    isGameOver: boolean = false
 
     constructor() {
         this.food = new Food()
@@ -54,7 +57,7 @@ class Controller {
         // 获取蛇头当前的坐标
         let X = this.snake.X
         let Y = this.snake.Y
-        console.log('before', X, Y)
+        // console.log('before', X, Y)
 
         /**
          * 根据this.direction来让蛇改变方向，每次值的变化为10
@@ -69,29 +72,35 @@ class Controller {
             case 'ArrowUp':
                 // 向上
                 Y -= 10
-                break;
+                this.snake.head.style.transform = 'rotate(0deg)'
+                break
             case 'ArrowDown':
                 // 向下
                 Y += 10
-                break;
+                this.snake.head.style.transform = 'rotate(180deg)'
+                break
             case 'ArrowLeft':
                 // 向左
                 X -= 10
-                break;
+                this.snake.head.style.transform = 'rotate(-90deg)'
+                break
             case 'ArrowRight':
                 // 向右
                 X += 10
-                break;
+                this.snake.head.style.transform = 'rotate(90deg)'
+                break
         }
 
         // 将新坐标赋值给蛇
-        console.log('computed', X, Y)
+        // console.log('computed', X, Y)
         this.snake.X = X
         this.snake.Y = Y
-        console.log('after', this.snake.X, this.snake.Y)
+        // console.log('after', this.snake.X, this.snake.Y)
 
+        const { level } = this.scoreBoard
         // 开启定时调用
-        // setTimeout(this.move.bind(this), 300);
+        !this.isGameOver && setTimeout(this.move.bind(this), 600)
+        // !this.isGameOver && setTimeout(this.move.bind(this), 600 - (level - 1) * 6)
     }
 }
 

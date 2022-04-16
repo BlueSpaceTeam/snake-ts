@@ -42,12 +42,20 @@
 
 // 蛇
 #snake {
-    // 蛇头
-    .section:first-child {
+
+    // 蛇的每一节
+    .section {
+        position: absolute;
+        padding : 1px;
+
         .bone {
-            justify-content : space-around;
-            align-items: flex-start;
-            padding-top: 1px;
+            box-sizing     : border-box;
+            width          : 9px;
+            height         : 9px;
+            border         : 1px solid $main-color;
+            display        : flex;
+            justify-content: center;
+            align-items    : center;
 
             &::before,
             &::after {
@@ -55,6 +63,24 @@
                 width           : 2px;
                 height          : 2px;
                 background-color: $main-color;
+            }
+        }
+
+        // 蛇头
+        &:first-child {
+            transform: rotate(90deg);
+
+            .bone {
+                justify-content: space-around;
+                align-items    : flex-start;
+
+                &::before,
+                &::after {
+                    content         : '';
+                    width           : 2px;
+                    height          : 2px;
+                    background-color: $main-color;
+                }
             }
         }
     }

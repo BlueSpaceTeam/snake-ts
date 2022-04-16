@@ -17,7 +17,11 @@ new Controller()
 // // 调用展示-TODEL
 // const scoreBoardObj = new ScoreBoard()
 // setTimeout(() => {
-//     scoreBoardObj.totalScore = 21
+//     scoreBoardObj.totalScore = 2
+
+//     setTimeout(() => {
+//         scoreBoardObj.rank = 10
+//     }, 5000)
 // }, 5000)
 
 // // 测试，可删

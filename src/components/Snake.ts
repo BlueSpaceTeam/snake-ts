@@ -1,13 +1,13 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-16 13:34:29
- * @LastEditTime: 2022-04-16 15:18:56
+ * @LastEditTime: 2022-04-16 17:20:43
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/components/Snake.ts
  */
 
-class Snake {
+export default class Snake {
     // 定义整条蛇元素的属性
     el: HTMLElement
     // 定义蛇头元素的属性
@@ -47,5 +47,3 @@ class Snake {
         this.el.insertAdjacentHTML('beforeend', '<div></div>')
     }
 }
-
-export default Snake

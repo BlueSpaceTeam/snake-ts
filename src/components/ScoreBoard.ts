@@ -6,12 +6,18 @@
 
 export default class ScoreBoard {
 	private _totalScore: number = 0 // 总分
-	private _rank: string = 'A' // 等级
+	private _level: number = 0 // 等级
 
 	elScore: HTMLElement = document.getElementById('score')! // 总分元素Dom对象
-	elRank: HTMLElement = document.getElementById('rank')!// 等级元素Dom对象
+	elLevel: HTMLElement = document.getElementById('level')!// 等级元素Dom对象
 
-	deltaScore: number = 2 // 等差数列中的公差
+	speed: number // 速度。等级level = 函数f(分数score, 速度speed)
+	maxLevel: number // 最大等级
+
+	constructor (speed: number = 2, maxLevel: number = 100 ) {
+		this.maxLevel = maxLevel 
+		this.speed = speed
+	}
 
 	get totalScore(): number { // 获取总分
 		return this._totalScore
@@ -19,27 +25,25 @@ export default class ScoreBoard {
 	set totalScore(newVal: number) { // 设置总分
 		this._totalScore = newVal
 		this.elScore.innerText = newVal + ''
-		this.handleRankMap(newVal)
+		this.handleLevelMap(newVal)
 	}
 
-	get rank(): string { // 获取等级
-		// return this.elRank.innerText
-		return this._rank
+	get level(): number { // 获取等级
+		return this._level
 	}
 
-	set rank(newVal) { // 设置等级
-		this.elRank.innerText = newVal
-		this._rank = newVal
+	set level(newVal) { // 设置等级
+		this.elLevel.innerText = newVal + ''
+		this._level = newVal
 	}
 
-	private handleRankMap(totalScore: number = 0): void { // 处理等级规则
-		const { deltaScore } = this
-		for (let i: number = 0; i <= 26; i++) {
-			if (totalScore <= (i + 1) * deltaScore) { // 在当前范围内，映射成字符
-				this.rank = String.fromCharCode(i + 65)
+	private handleLevelMap(totalScore: number = 0): void { // 处理等级规则
+		const { speed, maxLevel } = this
+
+		for (let i: number = 1; i <= maxLevel; i++) {
+			if (totalScore <= i * speed) { // 在当前范围内，映射成字符
+				this.level = i
 				break
-			} else if (i + 1 === 26) {
-				this.rank = 'Z+'
 			}
 		}
 	}
