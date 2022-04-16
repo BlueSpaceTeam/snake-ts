@@ -16,26 +16,26 @@
 
     // 蛇的每一节
     &>div {
-        box-sizing      : border-box;
         width           : 10px;
         height          : 10px;
-        border          : 1px solid $main-color;
+        background-color: $main-color;
+        border          : 1px solid $bg-color;
         display         : flex;
         justify-content : center;
         align-items     : center;
-        margin: 1px;
 
         &::before {
             content         : '';
             width           : 6px;
             height          : 6px;
             background-color: $main-color;
+            border          : 1px solid $bg-color;
         }
 
         // 蛇头
         &:first-child {
-            justify-content : space-around;
-            align-items: flex-start;
+            justify-content: space-around;
+            align-items    : flex-start;
 
             &::before,
             &::after {
