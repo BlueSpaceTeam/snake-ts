@@ -17,17 +17,30 @@
     }
 
     &>div:first-child {
-        width           : 6px;
-        height          : 6px;
-        margin          : 1px;
-        background-color: $bg-color;
-        border          : 3px solid $main-color;
+        & > div {
+            display: flex;
+            justify-content: space-around;
+            background-color: transparent;
 
-        &>div {
-            width           : 4px;
-            height          : 4px;
-            background-color: $main-color;
-            border          : 1px solid $bg-color;
+            &::before,
+            &::after {
+                content: '';
+                width: 2px;
+                height: 2px;
+                background-color: $main-color;
+            }
         }
+        // width           : 6px;
+        // height          : 6px;
+        // margin          : 1px;
+        // background-color: $bg-color;
+        // border          : 3px solid $main-color;
+
+        // &>div {
+        //     width           : 4px;
+        //     height          : 4px;
+        //     background-color: $main-color;
+        //     border          : 1px solid $bg-color;
+        // }
     }
 }
