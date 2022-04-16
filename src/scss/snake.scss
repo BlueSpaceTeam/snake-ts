@@ -18,8 +18,8 @@
 
     .bone {
         box-sizing      : border-box;
-        width           : 9px;
-        height          : 9px;
+        width           : 8px;
+        height          : 8px;
         border          : 1px solid $main-color;
         display         : flex;
         justify-content : center;
@@ -27,8 +27,8 @@
 
         &::before {
             content         : '';
-            width           : 6px;
-            height          : 6px;
+            width           : 4px;
+            height          : 4px;
             background-color: $main-color;
         }
     }
