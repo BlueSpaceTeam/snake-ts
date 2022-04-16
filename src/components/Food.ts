@@ -1,13 +1,13 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-16 12:09:52
- * @LastEditTime: 2022-04-16 15:01:58
+ * @LastEditTime: 2022-04-16 17:21:17
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/components/Food.ts
  */
 
-class Food {
+export default class Food {
     // 定义食物元素的属性
     el: HTMLElement
 
@@ -38,5 +38,3 @@ class Food {
         this.el.style.top = top + 'px'
     }
 }
-
-export default Food
