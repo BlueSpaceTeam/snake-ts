@@ -15,34 +15,40 @@
     position: absolute;
 
     // 蛇的每一节
-    &>div {
-        width           : 10px;
-        height          : 10px;
-        background-color: $main-color;
-        border          : 1px solid $bg-color;
-        display         : flex;
-        justify-content : center;
-        align-items     : center;
+    .section {
+        position: absolute;
+        padding: 1px;
 
-        &::before {
-            content         : '';
-            width           : 6px;
-            height          : 6px;
-            background-color: $main-color;
-            border          : 1px solid $bg-color;
+        .bone {
+            box-sizing      : border-box;
+            width           : 9px;
+            height          : 9px;
+            border          : 1px solid $main-color;
+            display         : flex;
+            justify-content : center;
+            align-items     : center;
+
+            &::before {
+                content         : '';
+                width           : 6px;
+                height          : 6px;
+                background-color: $main-color;
+            }
         }
-
+        
         // 蛇头
         &:first-child {
-            justify-content: space-around;
-            align-items    : flex-start;
+            .bone {
+                justify-content : space-around;
+                align-items: flex-start;
 
-            &::before,
-            &::after {
-                content         : '';
-                width           : 2px;
-                height          : 2px;
-                background-color: $main-color;
+                &::before,
+                &::after {
+                    content         : '';
+                    width           : 2px;
+                    height          : 2px;
+                    background-color: $main-color;
+                }
             }
         }
     }
