@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-14 21:56:08
- * @LastEditTime: 2022-04-15 11:02:22
+ * @LastEditTime: 2022-04-16 12:06:04
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/webpack.config.js
@@ -26,9 +26,11 @@ const config = {
         path: path.resolve(__dirname, 'dist'),
         // 打包后的文件名
         filename: 'bundle.js',
-        // 告诉webpack不使用箭头函数
         environment: {
-            // arrowFunction: false
+            // 不使用箭头函数
+            // arrowFunction: false,
+            // 不使用const（为了兼容IE10）
+            // const: false,
         }
     },
     // 指定webpack打包时要用的模块
