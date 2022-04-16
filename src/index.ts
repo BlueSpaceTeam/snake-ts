@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-14 22:01:46
- * @LastEditTime: 2022-04-16 12:31:38
+ * @LastEditTime: 2022-04-16 12:44:58
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/index.ts
@@ -24,4 +24,6 @@ setTimeout(() => {
 
 // 测试，可删
 const food = new Food()
+console.log(food.X, food.Y)
+food.change()
 console.log(food.X, food.Y)
