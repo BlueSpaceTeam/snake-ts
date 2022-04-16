@@ -11,10 +11,13 @@ import './scss/base.scss'
 import './scss/wrap.scss'
 import './index.less'
 
-const sum = (a: number, b: number): number => a + b
+import { ScoreBoard } from './components/ScoreBoard'
 
-console.log(sum(123, 456))
+const scoreBoardObj = new ScoreBoard()
 
-const str: string = 'Hello world!'
+// 调用
+setTimeout(() => {
+    scoreBoardObj.addScore(100)
 
-console.log(str)
+    console.log(scoreBoardObj.rank)
+}, 5000)

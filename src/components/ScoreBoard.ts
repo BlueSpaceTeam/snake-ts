@@ -17,19 +17,21 @@ export class ScoreBoard {
 	private _socre: number = 0 // 分数
 	private _rank: string = 'A' // 等级
 
-	get score () {
-		return this._socre
-	}
-	set score (newVal: number) {
-		this._socre = newVal;
+	// get score () {
+	// 	return this._socre
+	// }
+	// set score (newVal: number) {
+	// 	this._socre = newVal;
 
-		// 副作用
-		(document.getElementById('score') as HTMLSpanElement).innerText = newVal + ''
+	// 	// 副作用
+	// 	(document.getElementById('score') as HTMLSpanElement).innerText = newVal + ''
 
-		this.handleRankMap()
-	}
+	// 	this.handleRankMap()
+	// }
 
 	get rank () {
+		// 副作用
+		(document.getElementById('rank') as HTMLSpanElement).innerText = this._rank
 		return this._rank
 	}
 
@@ -47,5 +49,13 @@ export class ScoreBoard {
 				break
 			}
 		}
+	}
+
+	addScore (score: number = 0): void {
+		this._socre += score;
+		// 副作用
+		(document.getElementById('score') as HTMLSpanElement).innerText = this._socre + ''
+
+		this.handleRankMap()
 	}
 }
