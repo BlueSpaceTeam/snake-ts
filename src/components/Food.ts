@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-16 12:09:52
- * @LastEditTime: 2022-04-16 13:07:49
+ * @LastEditTime: 2022-04-16 15:01:58
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/components/Food.ts
@@ -17,22 +17,22 @@ class Food {
     }
 
     // 获取食物的x坐标
-    get X() {
-        return this.el.offsetLeft
+    get X(): number {
+        return this.el.offsetLeft;
     }
 
     // 获取食物的y坐标
-    get Y() {
-        return this.el.offsetTop
+    get Y(): number {
+        return this.el.offsetTop;
     }
 
     // 随机修改食物位置
     change() {
         // 生成坐标随机数，必须是0、10或10的倍数。
         // x的值最小0，最大(700 - 10) / 10=69
-        const left = Math.round(Math.random() * 69) * 10
+        const left: number = Math.round(Math.random() * 69) * 10
         // y的值最小0，最大(500 - 10) / 10=49
-        const top = Math.round(Math.random() * 49) * 10
+        const top: number = Math.round(Math.random() * 49) * 10
 
         this.el.style.left = left + 'px'
         this.el.style.top = top + 'px'

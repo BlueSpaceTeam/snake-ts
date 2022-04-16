@@ -1,3 +1,11 @@
+/*
+ * @Author: fantiga
+ * @Date: 2022-04-16 13:11:39
+ * @LastEditTime: 2022-04-16 15:18:09
+ * @LastEditors: fantiga
+ * @Description: 
+ * @FilePath: /snake-ts/src/components/ScoreBoard.ts
+ */
 /**
  * 等级规则：
  * 0-10，11-30,31-60，61-100，101-150,151-210
@@ -10,7 +18,7 @@
 
 const maxRangeNums = Array(26).fill(0).map((n, idx) => (idx + 1)*(idx + 2)*5)
 
-export class ScoreBoard {
+export default class ScoreBoard {
 	isDeBug: boolean = false // 是否debug模式
 
 	get score () { 
