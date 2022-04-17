@@ -3,7 +3,8 @@ $bg-color   : #abcb9b;
 
 .wrapper {
     margin          : 20px auto;
-    width           : 750px;
+    padding         : 20px 20px 0;
+    width           : fit-content;
     border          : 6px solid $main-color;
     background-color: $bg-color;
     border-radius   : 20px;
@@ -14,8 +15,7 @@ $bg-color   : #abcb9b;
     justify-content: space-between;
     align-items    : center;
     height         : 80px;
-    padding        : 0 40px;
-    font-size      : 30px;
+    font-size      : 3vw;
     font-family    : 'Pangolin', 'Comic Sans MS';
 
     .grid {

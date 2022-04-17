@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-16 13:34:29
- * @LastEditTime: 2022-04-17 13:40:09
+ * @LastEditTime: 2022-04-17 16:06:47
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/components/Snake.ts
@@ -67,8 +67,8 @@ export default class Snake {
     }
 
     // 给蛇增加身体的方法
-    addBody(): void {
+    addBody = (): void => {
         // 往snake中加一个div
-        this.el.insertAdjacentHTML('beforeend', '<div></div>')
+        this.el.insertAdjacentHTML('beforeend', '<div class="section"><div class="bone"></div></div>')
     }
 }

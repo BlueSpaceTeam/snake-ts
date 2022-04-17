@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-16 15:15:45
- * @LastEditTime: 2022-04-17 13:42:21
+ * @LastEditTime: 2022-04-17 18:18:41
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/components/Controller.ts
@@ -37,7 +37,7 @@ export default class Controller {
     }
 
     // 游戏初始化方法，调用即开始游戏
-    init() {
+    init = (): void => {
         // 重定义游戏舞台宽高
         const gameStage: HTMLElement = document.getElementById('stage')!
         gameStage.style.width = GAME_WIDTH + 'px'
@@ -69,13 +69,13 @@ export default class Controller {
     }
 
     // 键盘事件响应
-    keyboardHandler = (event: KeyboardEvent) => {
+    keyboardHandler = (event: KeyboardEvent): void => {
         // 修改方向
         this.direction = event.key
     }
 
     // 控制蛇的移动
-    move = () => {
+    move = (): void => {
         // 获取蛇头当前的坐标
         let X = this.snake.X
         let Y = this.snake.Y
@@ -112,6 +112,9 @@ export default class Controller {
                 break
         }
 
+        // 检查是否吃到食物
+        this.checkEat(X, Y)
+
         try {
             // 将新坐标赋值给蛇
             this.snake.X = X
@@ -124,5 +127,17 @@ export default class Controller {
 
         // 开启定时调用
         !this.isGameOver && setTimeout(this.move.bind(this), 600 - (this.scoreBoard.level - 1) * 6)
+    }
+
+    // 检查是否吃到食物的方法
+    checkEat = (X: number, Y: number): void => {
+        if (X === this.food.X && Y === this.food.Y) {
+            // 重置食物的位置
+            this.food.change()
+            // 增加分数
+            this.scoreBoard.totalScore++
+            // 增加身体
+            this.snake.addBody()
+        }
     }
 }
