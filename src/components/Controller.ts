@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-16 15:15:45
- * @LastEditTime: 2022-04-17 13:07:28
+ * @LastEditTime: 2022-04-17 13:42:21
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/components/Controller.ts
@@ -13,7 +13,7 @@ import ScoreBoard from './ScoreBoard'
 
 import { GAME_WIDTH, GAME_HEIGHT } from '../constant'
 
-class Controller {
+export default class Controller {
     food: Food
     snake: Snake
     scoreBoard: ScoreBoard
@@ -70,8 +70,6 @@ class Controller {
 
     // 键盘事件响应
     keyboardHandler = (event: KeyboardEvent) => {
-        // console.log(this.direction)
-        // console.log(event.key)
         // 修改方向
         this.direction = event.key
     }
@@ -81,7 +79,6 @@ class Controller {
         // 获取蛇头当前的坐标
         let X = this.snake.X
         let Y = this.snake.Y
-        // console.log('before', X, Y)
 
         /**
          * 根据this.direction来让蛇改变方向，每次值的变化为10
@@ -115,16 +112,17 @@ class Controller {
                 break
         }
 
-        // 将新坐标赋值给蛇
-        // console.log('computed', X, Y)
-        this.snake.X = X
-        this.snake.Y = Y
-        // console.log('after', this.snake.X, this.snake.Y)
+        try {
+            // 将新坐标赋值给蛇
+            this.snake.X = X
+            this.snake.Y = Y
+        } catch (error) {
+            // 出现异常，游戏结束
+            alert('[GAME OVER] ' + (error as Error).message)
+            this.isGameOver = true
+        }
 
         // 开启定时调用
-        // !this.isGameOver && setTimeout(this.move.bind(this), 600)
         !this.isGameOver && setTimeout(this.move.bind(this), 600 - (this.scoreBoard.level - 1) * 6)
     }
 }
-
-export default Controller
