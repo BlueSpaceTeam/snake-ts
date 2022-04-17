@@ -1,0 +1,93 @@
+.modal {
+    display: none;
+    pointer-events: none;
+
+    .mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba($color: #212121, $alpha: 0.5);
+        opacity: 0;
+        transition: all 0.2s;
+
+        &.trans-show {
+            opacity: 1;
+        }
+    }
+
+    .main {
+        overflow: hidden;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 300px;
+        opacity: 0;
+        transition: all 0.2s;
+        border-radius: 4px;
+        background: #fff;
+        transform: translate(-50%, -50%);
+
+        &.trans-show {
+            opacity: 1;
+        }
+    }
+
+    &.show {
+        z-index: 999;
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: auto;
+    }
+
+    #title {
+        box-sizing: content-box;
+        padding-top: 10px;
+        height: 40px;
+        line-height: 40px;
+        font-size:17px;
+        text-align: center;
+    }
+
+    #content,
+    #sub-content {
+        padding: 0 20px;
+        color: #757575;
+    }
+
+    #content {
+        margin-top: 12px;
+        font-size: 15px;
+    }
+
+    #sub-content {
+        margin-top: 12px;
+        font-size: 13px;
+    }
+
+
+    .operation {
+        display: flex;
+        margin-top: 12px;
+        border-top: 1px solid #f4f5f6;
+    }
+    .btn {
+        flex: 1;
+        height: 44px;
+        border: none;
+        background-color: #fff;
+    }
+
+    .btn-replay {
+        color: #4C97F4;
+    }
+
+    .btn-reset {
+        color: #b2b2b2;
+    }
+}

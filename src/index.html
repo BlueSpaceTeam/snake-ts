@@ -17,6 +17,9 @@
                 <div class="section">
                     <div class="bone"></div>
                 </div>
+                <div class="section">
+                    <div class="bone"></div>
+                </div>
             </div>
 
             <div id="food" class="section">
@@ -26,6 +29,19 @@
         <div class="score-board">
             <div class="grid">SCORE: <span id="score">0</span></div>
             <div class="grid">LEVEL: <span id="level">1</span></div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="mask" id="mask"></div>
+        <div class="main" id="main">
+            <div id="title">Game over</div>
+            <div id="content">You has got 500</div>
+            <div id="sub-content">your best score is 1000</div>
+            <div class="operation">
+                <button class="btn btn-cancel" id="btn-cancel">Cancel</button>
+                <button class="btn btn-replay" id="btn-replay">Replay</button>
+            </div>
         </div>
     </div>
 </body>
