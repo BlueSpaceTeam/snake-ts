@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-16 15:15:45
- * @LastEditTime: 2022-04-16 18:20:49
+ * @LastEditTime: 2022-04-17 13:02:55
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/components/Controller.ts
@@ -11,13 +11,18 @@ import Food from './Food'
 import Snake from './Snake'
 import ScoreBoard from './ScoreBoard'
 
+import { GAME_WIDTH, GAME_HEIGHT } from '../const'
+
 class Controller {
     food: Food
     snake: Snake
     scoreBoard: ScoreBoard
 
-    // 移动方向（keydown的值，默认一开始向右移动）
-    direction: string = ''
+    /**
+     * 移动方向，keydown的值。
+     * 值为''则游戏开始后不动，按方向键才动。
+     */
+    direction: string = 'ArrowRight'
 
     // 游戏是否结束
     isGameOver: boolean = false
@@ -33,6 +38,25 @@ class Controller {
 
     // 游戏初始化方法，调用即开始游戏
     init() {
+        // 重定义游戏舞台宽高
+        const gameStage: HTMLElement = document.getElementById('stage')!
+        gameStage.style.width = GAME_WIDTH + 'px'
+        gameStage.style.height = GAME_HEIGHT + 'px'
+
+        // // 调用展示-TODEL
+        // const scoreBoardObj = new ScoreBoard()
+        // setTimeout(() => {
+        //     scoreBoardObj.totalScore = 2
+        //     setTimeout(() => {
+        //         scoreBoardObj.rank = 10
+        //     }, 5000)
+        // }, 5000)
+
+        // 测试，可删
+        // console.log(this.food.X, this.food.Y)
+        this.food.change()
+        // console.log(this.food.X, this.food.Y)
+
         /**
          * 绑定键盘按下事件
          * this.keyboardHandler中的this，是document对象
@@ -97,10 +121,9 @@ class Controller {
         this.snake.Y = Y
         // console.log('after', this.snake.X, this.snake.Y)
 
-        const { level } = this.scoreBoard
         // 开启定时调用
-        !this.isGameOver && setTimeout(this.move.bind(this), 600)
-        // !this.isGameOver && setTimeout(this.move.bind(this), 600 - (level - 1) * 6)
+        // !this.isGameOver && setTimeout(this.move.bind(this), 600)
+        !this.isGameOver && setTimeout(this.move.bind(this), 600 - (this.scoreBoard.level - 1) * 6)
     }
 }
 

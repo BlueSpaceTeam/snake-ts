@@ -1,11 +1,13 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-16 12:09:52
- * @LastEditTime: 2022-04-16 17:21:17
+ * @LastEditTime: 2022-04-17 13:04:48
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/components/Food.ts
  */
+
+import { GAME_WIDTH, GAME_HEIGHT } from '../const'
 
 export default class Food {
     // 定义食物元素的属性
@@ -30,9 +32,9 @@ export default class Food {
     change() {
         // 生成坐标随机数，必须是0、10或10的倍数。
         // x的值最小0，最大(700 - 10) / 10=69
-        const left: number = Math.round(Math.random() * 69) * 10
+        const left: number = Math.round(Math.random() * (GAME_WIDTH / 10 - 10)) * 10
         // y的值最小0，最大(500 - 10) / 10=49
-        const top: number = Math.round(Math.random() * 49) * 10
+        const top: number = Math.round(Math.random() * (GAME_HEIGHT / 10 - 10)) * 10
 
         this.el.style.left = left + 'px'
         this.el.style.top = top + 'px'

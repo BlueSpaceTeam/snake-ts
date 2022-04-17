@@ -1,27 +1,27 @@
-$main-color: #000;
-$bg-color: #abcb9b;
+$main-color : #000;
+$bg-color   : #abcb9b;
 
 .wrapper {
-    margin: 20px auto;
-    width: 750px;
-    border: 6px solid $main-color;
+    margin          : 20px auto;
+    width           : 750px;
+    border          : 6px solid $main-color;
     background-color: $bg-color;
-    border-radius: 20px;
+    border-radius   : 20px;
 }
 
 .score-board {
-    display: flex;
+    display        : flex;
     justify-content: space-between;
-    align-items: center;
-    height: 80px;
-    padding: 0 40px;
-    font-size: 30px;
-    font-family: 'Pangolin', 'Comic Sans MS';
+    align-items    : center;
+    height         : 80px;
+    padding        : 0 40px;
+    font-size      : 30px;
+    font-family    : 'Pangolin', 'Comic Sans MS';
 
     .grid {
-        max-width: 48%;
-        overflow: hidden;
+        max-width    : 48%;
+        overflow     : hidden;
         text-overflow: ellipsis;
-        white-space: nowrap;
+        white-space  : nowrap;
     }
 }

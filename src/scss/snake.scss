@@ -1,11 +1,9 @@
 @import './wrap.scss';
 
-.move-area {
+#stage {
     box-sizing: content-box;
     margin    : 20px auto 0;
     border    : 3px solid $main-color;
-    width     : 702px;
-    height    : 502px;
 
     position: relative;
 }
@@ -84,9 +82,4 @@
             }
         }
     }
-}
-
-#food {
-    left: 100px;
-    top: 100px;
 }
