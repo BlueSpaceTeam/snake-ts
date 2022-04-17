@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-16 15:15:45
- * @LastEditTime: 2022-04-17 13:02:55
+ * @LastEditTime: 2022-04-17 13:07:28
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/components/Controller.ts
@@ -11,7 +11,7 @@ import Food from './Food'
 import Snake from './Snake'
 import ScoreBoard from './ScoreBoard'
 
-import { GAME_WIDTH, GAME_HEIGHT } from '../const'
+import { GAME_WIDTH, GAME_HEIGHT } from '../constant'
 
 class Controller {
     food: Food

@@ -1,10 +1,10 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-17 11:47:22
- * @LastEditTime: 2022-04-17 12:56:15
+ * @LastEditTime: 2022-04-17 13:07:24
  * @LastEditors: fantiga
  * @Description: 
- * @FilePath: /snake-ts/src/const.ts
+ * @FilePath: /snake-ts/src/constant.ts
  */
 
 // 游戏舞台宽度

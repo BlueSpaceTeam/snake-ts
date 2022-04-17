@@ -1,13 +1,13 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-16 12:09:52
- * @LastEditTime: 2022-04-17 13:04:48
+ * @LastEditTime: 2022-04-17 13:07:31
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/components/Food.ts
  */
 
-import { GAME_WIDTH, GAME_HEIGHT } from '../const'
+import { GAME_WIDTH, GAME_HEIGHT } from '../constant'
 
 export default class Food {
     // 定义食物元素的属性
