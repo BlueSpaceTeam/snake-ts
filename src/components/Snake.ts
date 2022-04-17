@@ -1,11 +1,13 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-16 13:34:29
- * @LastEditTime: 2022-04-16 17:20:43
+ * @LastEditTime: 2022-04-17 13:40:09
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/components/Snake.ts
  */
+
+import { GAME_WIDTH, GAME_HEIGHT } from '../constant'
 
 export default class Snake {
     // 定义整条蛇元素的属性
@@ -33,11 +35,34 @@ export default class Snake {
 
     // 设置蛇头x坐标
     set X(value: number) {
+        if (this.X === value) {
+            return
+        }
+
+        /**
+         * 判断撞墙
+         * 值的范围要在 0 和 GAME_WIDTH 之间
+         */
+        if (value < 0 || value > GAME_WIDTH) {
+            throw new Error('You hit the wall!')
+        }
+
         this.head.style.left = value + 'px'
     }
 
     // 设置蛇头y坐标
     set Y(value: number) {
+        if (this.Y === value) {
+            return
+        }
+        /**
+         * 判断撞墙
+         * 值的范围要在 0 和 GAME_HEIGHT 之间
+         */
+        if (value < 0 || value > GAME_HEIGHT) {
+            throw new Error('You hit the wall!')
+        }
+
         this.head.style.top = value + 'px'
     }
 
