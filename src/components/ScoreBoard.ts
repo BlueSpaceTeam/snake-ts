@@ -4,6 +4,8 @@
  * 每 2分 升一个等级，(对应属性deltaScore)
  * */
 
+import { DEFAULT_MAX_LEVEL, DEFAULT_LEVEL_SPEED  } from '../constant'
+
 /**
  * 计分板
  * @param speed：速度，默认每2分一个等级
@@ -24,7 +26,7 @@ export default class ScoreBoard {
 	elLevel: HTMLElement = document.getElementById('level')!// 等级元素Dom对象
 
 
-	constructor (speed: number = 2, maxLevel: number = 100 ) {
+	constructor (speed: number = DEFAULT_LEVEL_SPEED, maxLevel: number = DEFAULT_MAX_LEVEL ) {
 		this._maxLevel = maxLevel 
 		this._speed = speed
 	}

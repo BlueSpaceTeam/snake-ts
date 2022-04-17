@@ -12,3 +12,9 @@ export const GAME_WIDTH: number = 700
 
 // 游戏舞台高度
 export const GAME_HEIGHT: number = 500
+
+// 计分板默认最大等级
+export const DEFAULT_MAX_LEVEL : number = 100
+
+// 计分板默认等级变化速度
+export const DEFAULT_LEVEL_SPEED : number = 2
