@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-16 13:34:29
- * @LastEditTime: 2022-04-17 16:06:47
+ * @LastEditTime: 2022-04-23 11:59:16
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/components/Snake.ts
@@ -20,7 +20,7 @@ export default class Snake {
     constructor() {
         this.el = document.getElementById('snake')!
         this.head = document.querySelector('#snake > div')!
-        this.bodies = this.el.getElementsByTagName('div')
+        this.bodies = this.el.getElementsByClassName('section')
     }
 
     // 获取蛇头x坐标
@@ -47,6 +47,10 @@ export default class Snake {
             throw new Error('You hit the wall!')
         }
 
+        // 先移动身体
+        this.moveBody()
+
+        // 再移动头
         this.head.style.left = value + 'px'
     }
 
@@ -63,6 +67,10 @@ export default class Snake {
             throw new Error('You hit the wall!')
         }
 
+        // 先移动身体
+        this.moveBody()
+
+        // 再移动头
         this.head.style.top = value + 'px'
     }
 
@@ -70,5 +78,25 @@ export default class Snake {
     addBody = (): void => {
         // 往snake中加一个div
         this.el.insertAdjacentHTML('beforeend', '<div class="section"><div class="bone"></div></div>')
+    }
+
+    /**
+     * 给蛇移动身体的方法
+     * 将后面一节设置为前面一节的位置
+     */
+    moveBody = (): void => {
+        // 遍历所有身体
+        console.log(this.bodies.length)
+        for (let i: number = this.bodies.length - 1; i > 0; i--) {
+            // 获取前面身体的位置
+            let X = (this.bodies[i - 1] as HTMLElement).offsetLeft;
+            let Y = (this.bodies[i - 1] as HTMLElement).offsetTop;
+
+            console.log(i, X, Y);
+
+            // 设置到新的位置
+            (this.bodies[i] as HTMLElement).style.left = X + 'px';
+            (this.bodies[i] as HTMLElement).style.top = Y + 'px';
+        }
     }
 }

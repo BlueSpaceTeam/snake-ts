@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-14 22:01:46
- * @LastEditTime: 2022-04-17 11:54:09
+ * @LastEditTime: 2022-04-23 11:24:02
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/index.ts
@@ -17,15 +17,15 @@ import './scss/modal.scss'
 new Controller()
 
 
-let modal = new Modal()
+// let modal = new Modal()
 
-modal.showModal({
-    title: '你好',
-    content: 'hahah',
-    success: (b = '') => {
-        if (b === 'replay') {} else {}
-    },
-    fail: (err: any) => {
-        console.error(err)
-    }
-})
+// modal.showModal({
+//     title: '你好',
+//     content: 'hahah',
+//     success: (b = '') => {
+//         if (b === 'replay') {} else {}
+//     },
+//     fail: (err: any) => {
+//         console.error(err)
+//     }
+// })
