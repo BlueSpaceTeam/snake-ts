@@ -1,14 +1,14 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-14 22:01:46
- * @LastEditTime: 2022-04-23 11:24:02
+ * @LastEditTime: 2022-04-24 10:50:38
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/index.ts
  */
 
 import Controller from './components/Controller'
-import Modal from './components/Modal'
+// import Modal from './components/Modal'
 
 import './scss/base.scss'
 import './scss/snake.scss'

@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-16 13:34:29
- * @LastEditTime: 2022-04-23 11:59:16
+ * @LastEditTime: 2022-04-24 11:10:45
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/components/Snake.ts
@@ -67,6 +67,12 @@ export default class Snake {
             throw new Error('You hit the wall!')
         }
 
+        // 不允许调头的判断
+        if (this.bodies[1] && (this.bodies[1] as HTMLElement).offsetTop === value) {
+            // 强制继续向当前方向走
+            value = value > this.Y ? this.Y - 10 : this.Y + 10
+        }
+
         // 先移动身体
         this.moveBody()
 
@@ -86,13 +92,13 @@ export default class Snake {
      */
     moveBody = (): void => {
         // 遍历所有身体
-        console.log(this.bodies.length)
+        // console.log(this.bodies.length)
         for (let i: number = this.bodies.length - 1; i > 0; i--) {
             // 获取前面身体的位置
             let X = (this.bodies[i - 1] as HTMLElement).offsetLeft;
             let Y = (this.bodies[i - 1] as HTMLElement).offsetTop;
 
-            console.log(i, X, Y);
+            // console.log(i, X, Y);
 
             // 设置到新的位置
             (this.bodies[i] as HTMLElement).style.left = X + 'px';

@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-16 15:15:45
- * @LastEditTime: 2022-04-17 18:18:41
+ * @LastEditTime: 2022-04-24 11:10:37
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/components/Controller.ts
@@ -10,6 +10,7 @@
 import Food from './Food'
 import Snake from './Snake'
 import ScoreBoard from './ScoreBoard'
+import Modal from './Modal'
 
 import { GAME_WIDTH, GAME_HEIGHT } from '../constant'
 
@@ -70,8 +71,37 @@ export default class Controller {
 
     // 键盘事件响应
     keyboardHandler = (event: KeyboardEvent): void => {
-        // 修改方向
-        this.direction = event.key
+        /**
+         * 不允许调头的判断
+         * 如果有蛇身，且第一节蛇身的位置和蛇头要移动的位置相等，则判定为调头动作
+         */
+        // 可以转向的开关
+        let canChangeDirection: boolean = true
+        if (this.snake.bodies[1]) {
+            switch (this.direction) {
+                case 'ArrowUp':
+                    // 如果前一个方向是向下，则不能向上
+                    canChangeDirection = event.key === 'ArrowDown' ? false : true
+                    break
+                case 'ArrowDown':
+                    // 如果前一个方向是向上，则不能向下
+                    canChangeDirection = event.key === 'ArrowUp' ? false : true
+                    break
+                case 'ArrowLeft':
+                    // 如果前一个方向是向右，则不能向左
+                    canChangeDirection = event.key === 'ArrowRight' ? false : true
+                    break
+                case 'ArrowRight':
+                    // 如果前一个方向是向左，则不能向右
+                    canChangeDirection = event.key === 'ArrowLeft' ? false : true
+                    break
+            }
+        }
+
+        // 根据开关来修改方向
+        if (canChangeDirection) {
+            this.direction = event.key
+        }
     }
 
     // 控制蛇的移动
@@ -121,7 +151,17 @@ export default class Controller {
             this.snake.Y = Y
         } catch (error) {
             // 出现异常，游戏结束
-            alert('[GAME OVER] ' + (error as Error).message)
+            let modal = new Modal()
+            modal.showModal({
+                title: '[GAME OVER]',
+                content: (error as Error).message,
+                success: (b = '') => {
+                    if (b === 'replay') { } else { }
+                },
+                fail: (err: any) => {
+                    console.error(err)
+                }
+            })
             this.isGameOver = true
         }
 
