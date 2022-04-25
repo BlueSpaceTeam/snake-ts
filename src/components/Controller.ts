@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-16 15:15:45
- * @LastEditTime: 2022-04-24 11:10:37
+ * @LastEditTime: 2022-04-25 19:30:19
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/components/Controller.ts
@@ -18,6 +18,10 @@ export default class Controller {
     food: Food
     snake: Snake
     scoreBoard: ScoreBoard
+    modal: Modal
+
+    start: number
+    replay: HTMLElement
 
     /**
      * 移动方向，keydown的值。
@@ -32,9 +36,15 @@ export default class Controller {
         this.food = new Food()
         this.snake = new Snake()
         this.scoreBoard = new ScoreBoard()
+        this.modal = new Modal()
+
+        this.start = 0
+        this.replay = document.getElementById('replay')!
 
         // 调用初始化方法
         this.init()
+        this.replay.addEventListener('click', this.replayHandler.bind(this))
+
     }
 
     // 游戏初始化方法，调用即开始游戏
@@ -106,6 +116,7 @@ export default class Controller {
 
     // 控制蛇的移动
     move = (): void => {
+        console.log(this.isGameOver)
         // 获取蛇头当前的坐标
         let X = this.snake.X
         let Y = this.snake.Y
@@ -151,22 +162,33 @@ export default class Controller {
             this.snake.Y = Y
         } catch (error) {
             // 出现异常，游戏结束
-            let modal = new Modal()
-            modal.showModal({
+            this.isGameOver = true
+
+            // if (confirm((error as Error).message + 'Replay?')) {
+            //     this.replayHandler.bind(this)
+            // }
+            this.modal.showModal({
                 title: '[GAME OVER]',
                 content: (error as Error).message,
                 success: (b = '') => {
-                    if (b === 'replay') { } else { }
+                    if (b === 'replay') {
+                        this.modal.hideModal()
+                        this.replayHandler()
+                    } else { }
                 },
                 fail: (err: any) => {
                     console.error(err)
                 }
             })
-            this.isGameOver = true
         }
 
         // 开启定时调用
-        !this.isGameOver && setTimeout(this.move.bind(this), 600 - (this.scoreBoard.level - 1) * 6)
+        if (!this.isGameOver) {
+            this.start = window.setTimeout(this.move.bind(this), 600 - (this.scoreBoard.level - 1) * 6)
+        } else {
+            window.clearTimeout(this.start)
+            this.start = 0
+        }
     }
 
     // 检查是否吃到食物的方法
@@ -179,5 +201,27 @@ export default class Controller {
             // 增加身体
             this.snake.addBody()
         }
+    }
+
+    // 重新开始的方法
+    replayHandler = (): void => {
+        document.removeEventListener('keydown', this.keyboardHandler.bind(this))
+        window.clearTimeout(this.start)
+        this.start = 0
+
+        this.snake.el.innerHTML = '<div class="section"><div class="bone"></div></div>'
+        this.direction = 'ArrowRight'
+        this.snake.X = 0
+        this.snake.Y = 0
+        this.snake.head.style.transform = 'rotate(90deg)'
+        this.isGameOver = false
+        this.food = new Food()
+        this.snake = new Snake()
+        this.scoreBoard = new ScoreBoard()
+        this.modal = new Modal()
+
+        this.food.change()
+        document.addEventListener('keydown', this.keyboardHandler.bind(this))
+        this.move()
     }
 }
