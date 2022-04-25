@@ -33,8 +33,11 @@ export default class Modal {
                 success.call(this, actionType)
             }
 
-            this.elCancelBtn.addEventListener('click', this.successFn.bind(this, 'cancel'))
-            this.elReplayBtn.addEventListener('click', this.successFn.bind(this, 'replay'))
+            this.elCancelBtn.onclick = this.successFn.bind(this, 'cancel')
+            this.elReplayBtn.onclick = this.successFn.bind(this, 'replay')
+
+            // this.elCancelBtn.addEventListener('click', this.successFn.bind(this, 'cancel'))
+            // this.elReplayBtn.addEventListener('click', this.successFn.bind(this, 'replay'))
             this.show = true
         } catch (error) {
             fail(error)
@@ -43,7 +46,7 @@ export default class Modal {
 
     hideModal () : void {
         this.show = false
-        this.elCancelBtn.removeEventListener('click', this.successFn.bind(this, 'cancel'))
-        this.elReplayBtn.removeEventListener('click', this.successFn.bind(this, 'replay'))
+        // this.elCancelBtn.removeEventListener('click', this.successFn.bind(this, 'cancel'))
+        // this.elReplayBtn.removeEventListener('click', this.successFn.bind(this, 'replay'))
     }
 }
