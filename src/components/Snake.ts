@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-16 13:34:29
- * @LastEditTime: 2022-04-24 11:10:45
+ * @LastEditTime: 2022-04-25 17:04:35
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/components/Snake.ts
@@ -44,7 +44,7 @@ export default class Snake {
          * 值的范围要在 0 和 GAME_WIDTH 之间
          */
         if (value < 0 || value > GAME_WIDTH) {
-            throw new Error('You hit the wall!')
+            throw new Error('You bumped the wall!')
         }
 
         // 先移动身体
@@ -52,6 +52,9 @@ export default class Snake {
 
         // 再移动头
         this.head.style.left = value + 'px'
+
+        // 检查是否撞到自己
+        this.checkCollide()
     }
 
     // 设置蛇头y坐标
@@ -64,13 +67,7 @@ export default class Snake {
          * 值的范围要在 0 和 GAME_HEIGHT 之间
          */
         if (value < 0 || value > GAME_HEIGHT) {
-            throw new Error('You hit the wall!')
-        }
-
-        // 不允许调头的判断
-        if (this.bodies[1] && (this.bodies[1] as HTMLElement).offsetTop === value) {
-            // 强制继续向当前方向走
-            value = value > this.Y ? this.Y - 10 : this.Y + 10
+            throw new Error('You bumped the wall!')
         }
 
         // 先移动身体
@@ -78,6 +75,9 @@ export default class Snake {
 
         // 再移动头
         this.head.style.top = value + 'px'
+
+        // 检查是否撞到自己
+        this.checkCollide()
     }
 
     // 给蛇增加身体的方法
@@ -103,6 +103,18 @@ export default class Snake {
             // 设置到新的位置
             (this.bodies[i] as HTMLElement).style.left = X + 'px';
             (this.bodies[i] as HTMLElement).style.top = Y + 'px';
+        }
+    }
+
+    // 检查头身相撞
+    checkCollide = (): void => {
+        // 遍历所有身体
+        for (let i = 1; i < this.bodies.length; i++) {
+            let body = this.bodies[i] as HTMLElement
+            // 检查头和身体坐标是否重叠
+            if (this.X === body.offsetLeft && this.Y === body.offsetTop) {
+                throw new Error('You bumped yourself!')
+            }
         }
     }
 }
