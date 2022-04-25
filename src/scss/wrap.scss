@@ -1,6 +1,11 @@
 $main-color : #000;
 $bg-color   : #abcb9b;
 
+body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
 .wrapper {
     margin          : 20px auto;
     padding         : 20px 20px 0;
