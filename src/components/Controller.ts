@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-16 15:15:45
- * @LastEditTime: 2022-04-25 19:30:19
+ * @LastEditTime: 2022-04-25 22:05:28
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/components/Controller.ts
@@ -12,7 +12,7 @@ import Snake from './Snake'
 import ScoreBoard from './ScoreBoard'
 import Modal from './Modal'
 
-import { GAME_WIDTH, GAME_HEIGHT } from '../constant'
+import { GAME_WIDTH, GAME_HEIGHT, DEFAULT_MAX_LEVEL } from '../constant'
 
 export default class Controller {
     food: Food
@@ -172,7 +172,6 @@ export default class Controller {
                 content: (error as Error).message,
                 success: (b = '') => {
                     if (b === 'replay') {
-                        this.modal.hideModal()
                         this.replayHandler()
                     } else { }
                 },
@@ -184,7 +183,7 @@ export default class Controller {
 
         // 开启定时调用
         if (!this.isGameOver) {
-            this.start = window.setTimeout(this.move.bind(this), 600 - (this.scoreBoard.level - 1) * 6)
+            this.start = window.setTimeout(this.move.bind(this), 500 - (this.scoreBoard.level - 1) * (500 / DEFAULT_MAX_LEVEL))
         } else {
             window.clearTimeout(this.start)
             this.start = 0
@@ -218,7 +217,6 @@ export default class Controller {
         this.food = new Food()
         this.snake = new Snake()
         this.scoreBoard = new ScoreBoard()
-        this.modal = new Modal()
 
         this.food.change()
         document.addEventListener('keydown', this.keyboardHandler.bind(this))
