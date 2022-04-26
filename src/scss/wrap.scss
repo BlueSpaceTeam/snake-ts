@@ -16,17 +16,23 @@ body {
 }
 
 .score-board {
-    display        : flex;
-    justify-content: space-between;
-    align-items    : center;
-    height         : 80px;
-    font-size      : 3vw;
-    font-family    : 'Pangolin', 'Comic Sans MS';
+    display           : flex;
+    flex-wrap         : wrap;
+    padding           : 2vh 0;
+    font-size         : 3vw;
+    font-family       : 'Pangolin', 'Comic Sans MS';
 
-    .grid {
-        max-width    : 48%;
-        overflow     : hidden;
-        text-overflow: ellipsis;
-        white-space  : nowrap;
+    .row {
+        flex-basis     : 100%;
+        display        : flex;
+        justify-content: space-between;
+
+        .item {
+            max-width    : 48%;
+            overflow     : hidden;
+            text-overflow: ellipsis;
+            white-space  : nowrap;
+        }
     }
+
 }

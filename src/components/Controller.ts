@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-16 15:15:45
- * @LastEditTime: 2022-04-25 22:05:28
+ * @LastEditTime: 2022-04-26 16:20:02
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/components/Controller.ts
@@ -54,19 +54,10 @@ export default class Controller {
         gameStage.style.width = GAME_WIDTH + 'px'
         gameStage.style.height = GAME_HEIGHT + 'px'
 
-        // // 调用展示-TODEL
-        // const scoreBoardObj = new ScoreBoard()
-        // setTimeout(() => {
-        //     scoreBoardObj.totalScore = 2
-        //     setTimeout(() => {
-        //         scoreBoardObj.rank = 10
-        //     }, 5000)
-        // }, 5000)
+        // 显示历史最高分
+        this.scoreBoard.elBest.innerText = this.scoreBoard.best + ''
 
-        // 测试，可删
-        // console.log(this.food.X, this.food.Y)
         this.food.change()
-        // console.log(this.food.X, this.food.Y)
 
         /**
          * 绑定键盘按下事件
@@ -116,7 +107,6 @@ export default class Controller {
 
     // 控制蛇的移动
     move = (): void => {
-        console.log(this.isGameOver)
         // 获取蛇头当前的坐标
         let X = this.snake.X
         let Y = this.snake.Y
@@ -199,6 +189,12 @@ export default class Controller {
             this.scoreBoard.totalScore++
             // 增加身体
             this.snake.addBody()
+
+            // 判断是否最高分
+            if (this.scoreBoard.totalScore > this.scoreBoard.best) {
+                this.scoreBoard.best = this.scoreBoard.totalScore
+            }
+
         }
     }
 

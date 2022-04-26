@@ -4,7 +4,7 @@
  * 每 2分 升一个等级，(对应属性deltaScore)
  * */
 
-import { DEFAULT_MAX_LEVEL, DEFAULT_LEVEL_SPEED  } from '../constant'
+import { DEFAULT_MAX_LEVEL, DEFAULT_LEVEL_SPEED } from '../constant'
 
 /**
  * 计分板
@@ -15,7 +15,7 @@ import { DEFAULT_MAX_LEVEL, DEFAULT_LEVEL_SPEED  } from '../constant'
  * totalScore: 当前总分
  * level: 当前等级
  * 
- **/ 
+ **/
 export default class ScoreBoard {
 	private _totalScore: number = 0 // 总分
 	private _level: number = 0 // 等级
@@ -24,10 +24,11 @@ export default class ScoreBoard {
 
 	elScore: HTMLElement = document.getElementById('score')! // 总分元素Dom对象
 	elLevel: HTMLElement = document.getElementById('level')!// 等级元素Dom对象
+	elBest: HTMLElement = document.getElementById('best')!// 最高分元素Dom对象
 
 
-	constructor (speed: number = DEFAULT_LEVEL_SPEED, maxLevel: number = DEFAULT_MAX_LEVEL ) {
-		this._maxLevel = maxLevel 
+	constructor(speed: number = DEFAULT_LEVEL_SPEED, maxLevel: number = DEFAULT_MAX_LEVEL) {
+		this._maxLevel = maxLevel
 		this._speed = speed
 	}
 
@@ -47,6 +48,14 @@ export default class ScoreBoard {
 	set level(newVal) { // 设置等级
 		this.elLevel.innerText = newVal + ''
 		this._level = newVal
+	}
+
+	get best(): number { // 获取最高分
+		return localStorage.getItem('best') === null ? 0 : Number(localStorage.getItem('best'))
+	}
+	set best(newVal: number) { // 设置最高分
+		localStorage.setItem('best', newVal + '')
+		this.elBest.innerText = newVal + ''
 	}
 
 	private handleLevelMap(totalScore: number = 0): void { // 处理等级规则
