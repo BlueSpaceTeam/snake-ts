@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-16 15:15:45
- * @LastEditTime: 2022-04-27 19:00:45
+ * @LastEditTime: 2022-04-27 19:11:58
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/components/Controller.ts
@@ -76,6 +76,16 @@ export default class Controller {
          */
         // 可以转向的开关
         let canChangeDirection: boolean = true
+
+        // 屏蔽非法按键
+        if (
+            event.key !== 'ArrowUp' &&
+            event.key !== 'ArrowDown' &&
+            event.key !== 'ArrowLeft' &&
+            event.key !== 'ArrowRight'
+        ) return
+
+        // 如果有身体，则限制调头
         if (this.snake.bodies[1]) {
             switch (this.direction) {
                 case 'ArrowUp':
