@@ -1,6 +1,6 @@
 export default class Modal {
-    private _show: boolean = false
-    successFn: Function = () => {}
+    private _show: boolean = false // 控制弹窗是否展示
+    successFn: Function = () => {} // 展示弹窗成功后调用该函数
 
     elTitle: HTMLElement = document.getElementById('title')! // Modal的标题Dom对象
 	elContent: HTMLElement = document.getElementById('content')!// Modal的内容Dom对象
@@ -18,11 +18,21 @@ export default class Modal {
 
     set show (newVal) {
         this._show = newVal
+        // 控制弹窗样式及动画 ↓
         this.elModal.classList[newVal ? 'add' : 'remove']('show')
         this.elMask.classList[newVal ? 'add' : 'remove']('trans-show')
         this.elMain.classList[newVal ? 'add' : 'remove']('trans-show')
     }
 
+    /**
+     * 打开弹窗
+     * @param obj 传入对象，包含属性：
+     * title: 弹窗标题
+     * content: 主内容
+     * subContent: 次内容
+     * success: 打开弹窗成功后回调函数。默认点击任一按钮都会自动关闭当前弹窗。
+     * fail: 打开弹窗失败后回调函数 
+    */
     showModal ({ title = '', content = '', subContent = '', success = (e: any) => {}, fail = (e: any) => {}} = {}): void {
         try {
             this.elTitle.innerText = title
@@ -35,18 +45,13 @@ export default class Modal {
 
             this.elCancelBtn.onclick = this.successFn.bind(this, 'cancel')
             this.elReplayBtn.onclick = this.successFn.bind(this, 'replay')
-
-            // this.elCancelBtn.addEventListener('click', this.successFn.bind(this, 'cancel'))
-            // this.elReplayBtn.addEventListener('click', this.successFn.bind(this, 'replay'))
             this.show = true
         } catch (error) {
             fail(error)
         }
     }
 
-    hideModal () : void {
+    hideModal () : void { // 关闭弹窗
         this.show = false
-        // this.elCancelBtn.removeEventListener('click', this.successFn.bind(this, 'cancel'))
-        // this.elReplayBtn.removeEventListener('click', this.successFn.bind(this, 'replay'))
     }
 }
