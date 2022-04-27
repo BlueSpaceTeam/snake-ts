@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-17 11:47:22
- * @LastEditTime: 2022-04-25 21:55:47
+ * @LastEditTime: 2022-04-27 22:22:45
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/constant.ts
@@ -17,4 +17,4 @@ export const GAME_HEIGHT: number = 320
 export const DEFAULT_MAX_LEVEL : number = 10
 
 // 计分板默认等级变化速度
-export const DEFAULT_LEVEL_SPEED : number = 1
+export const DEFAULT_LEVEL_SPEED : number = 10
