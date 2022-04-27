@@ -8,10 +8,10 @@
  */
 
 // 游戏舞台宽度
-export const GAME_WIDTH: number = 200
+export const GAME_WIDTH: number = 320
 
 // 游戏舞台高度
-export const GAME_HEIGHT: number = 200
+export const GAME_HEIGHT: number = 320
 
 // 计分板默认最大等级
 export const DEFAULT_MAX_LEVEL : number = 10

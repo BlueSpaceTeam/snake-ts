@@ -22,8 +22,8 @@ body {
 .score-board {
     display    : flex;
     flex-wrap  : wrap;
-    padding    : 2vh 0;
-    font-size  : 2vw;
+    padding    : 16px 0 24px;
+    font-size  : 15px;
     font-family: 'Pangolin', 'Comic Sans MS';
 
     .row {
@@ -38,7 +38,7 @@ body {
             white-space  : nowrap;
 
             &#timer {
-                width     : 6em;
+                width     : 48%;
                 text-align: right;
             }
         }
