@@ -1,3 +1,4 @@
+$bg-color   : #abcb9b;
 .modal {
     display: none;
     pointer-events: none;
@@ -27,7 +28,7 @@
         opacity: 0;
         transition: all 0.2s;
         border-radius: 4px;
-        background: #fff;
+        background: $bg-color;
         transform: translate(-50%, -50%);
 
         &.trans-show {
@@ -52,43 +53,45 @@
         height: 40px;
         line-height: 40px;
         font-size:17px;
+        font-weight: 500;
         text-align: center;
     }
 
     #content,
     #sub-content {
         padding: 0 20px;
-        color: #757575;
     }
 
     #content {
         margin-top: 12px;
         font-size: 15px;
+        color: #212121;
     }
 
     #sub-content {
-        margin-top: 12px;
+        margin-top: 20px;
         font-size: 13px;
+        color: #757575;
     }
 
 
     .operation {
         display: flex;
         margin-top: 12px;
-        border-top: 1px solid #f4f5f6;
+        border-top: 1px solid #757575;
     }
     .btn {
         flex: 1;
         height: 44px;
         border: none;
-        background-color: #fff;
     }
 
     .btn-replay {
-        color: #4C97F4;
+        color: #000;
+        font-weight: 600;
     }
 
-    .btn-reset {
-        color: #b2b2b2;
+    .btn-cancel {
+        color: #212121;
     }
 }
