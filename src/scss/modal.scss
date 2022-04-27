@@ -1,6 +1,7 @@
 .modal {
     display: none;
     pointer-events: none;
+    background-color: transparent;
 
     .mask {
         position: absolute;
