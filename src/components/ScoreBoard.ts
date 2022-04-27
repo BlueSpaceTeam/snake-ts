@@ -86,30 +86,40 @@ export default class ScoreBoard {
 		}
 	}
 
+	// 计时器每次加1秒并且合并成字符串的方法
 	private timerHandler = (): void => {
+		// 每次加1秒
 		this.second++
+		// 逢60秒，分钟数加1
 		if (this.second >= 60) {
 			this.second = 0
 			this.minute++
 		}
+		// 逢60分，小时数加1
 		if (this.minute >= 60) {
 			this.minute = 0
 			this.hour++
 		}
+
+		// 拼接字符串，只有一位的数字前面补零
 		this.elTime.innerText = this.hour.toString().padStart(2, '0')
 			+ ':' + this.minute.toString().padStart(2, '0')
 			+ ':' + this.second.toString().padStart(2, '0')
 	}
 
+	// 计时器开始的方法
 	timerStart = (): void => {
-		this.timer = window.setInterval(this.timerHandler, 1000)
+		this.timer = window.setInterval(this.timerHandler, 1000)	// 每1秒执行一次
 	}
+
+	// 计时器停止的方法
 	timerStop = (): void => {
 		window.clearInterval(this.timer)
 	}
 
+	// 计时器复位的方法
 	timerReset = (): void => {
-		window.clearInterval(this.timer)
+		this.timerStop()
 		this.hour = this.minute = this.second = 0
 		this.elTime.innerText = '00:00:00'
 	}
