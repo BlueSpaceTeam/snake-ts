@@ -1,25 +1,30 @@
-<!--
- * @Author: fantiga
- * @Date: 2022-04-14 21:30:44
- * @LastEditTime: 2022-04-14 21:41:17
- * @LastEditors: fantiga
- * @Description: 
- * @FilePath: /snake-ts/README.md
--->
-### 练习用贪吃蛇TS版
+# snake-ts
 
-![](./demo.png)
+[![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
-![](./demo2.png)
+For personal study, swancai and I completed a snake game written only in typescript.
 
-## swancai
+## Table of Contents
 
-# 舞台
+- [Usage](#usage)
+- [Maintainers](#maintainers)
+- [Contributing](#contributing)
+- [License](#license)
 
-# 信息板
+## Usage
 
-## fantiga
+```
+```
 
-# 蛇
+## Maintainers
 
-# 食物
+[@FantiGA](https://github.com/FantiGA)
+[@swancai](https://github.com/swancai)
+
+## Contributing
+
+[@swancai](https://github.com/swancai)
+
+## License
+
+[MIT](LICENSE)  © 2022 FantiGA
