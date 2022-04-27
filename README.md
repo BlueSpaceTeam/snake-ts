@@ -13,8 +13,8 @@ For personal study, [@swancai](https://github.com/swancai) and I completed a sna
 
 ## Usage
 
-```
-```
+
+[https://fantiga.github.io/snake-ts/dist/]()
 
 ## Maintainers
 
