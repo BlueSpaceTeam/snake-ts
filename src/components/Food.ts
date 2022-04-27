@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-16 12:09:52
- * @LastEditTime: 2022-04-17 18:00:10
+ * @LastEditTime: 2022-04-27 22:12:51
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/components/Food.ts
@@ -28,13 +28,26 @@ export default class Food {
         return this.el.offsetTop;
     }
 
-    // 随机修改食物位置
-    change = (): void => {
+    /**
+     * 随机修改食物位置
+     * @param bodies 把蛇所有身体传入遍历，为了判断是否和食物新坐标重叠
+     */
+    change = (bodies: HTMLCollection): void => {
         // 生成坐标随机数，必须是0、10或10的倍数。
         // x的值最小 0，最大 GAME_WIDTH - 10
-        const left: number = Math.floor(Math.random() * GAME_WIDTH / 10) * 10
+        let left: number = Math.floor(Math.random() * GAME_WIDTH / 10) * 10
         // y的值最小 0，最大 GAME_HEIGHT - 10
-        const top: number = Math.floor(Math.random() * GAME_HEIGHT / 10) * 10
+        let top: number = Math.floor(Math.random() * GAME_HEIGHT / 10) * 10
+
+        // 遍历所有身体
+        for (let i = 0; i < bodies.length; i++) {
+            let body = bodies[i] as HTMLElement
+            // 检查身体坐标是否和食物重叠
+            if (this.X === body.offsetLeft && this.Y === body.offsetTop) {
+                left = Math.floor(Math.random() * GAME_WIDTH / 10) * 10
+                top = Math.floor(Math.random() * GAME_HEIGHT / 10) * 10
+            }
+        }
 
         this.el.style.left = left + 'px'
         this.el.style.top = top + 'px'

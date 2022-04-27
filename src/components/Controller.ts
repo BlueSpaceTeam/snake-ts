@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-16 15:15:45
- * @LastEditTime: 2022-04-27 20:47:42
+ * @LastEditTime: 2022-04-27 22:08:53
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/components/Controller.ts
@@ -52,7 +52,7 @@ export default class Controller {
         // 显示历史最高分
         this.scoreBoard.elBest.innerText = this.scoreBoard.best + ''
         // 改变食物位置
-        this.food.change()
+        this.food.change(this.snake.bodies)
 
         /**
          * 绑定键盘按下事件
@@ -193,7 +193,7 @@ export default class Controller {
     checkEat = (X: number, Y: number): void => {
         if (X === this.food.X && Y === this.food.Y) {
             // 重置食物的位置
-            this.food.change()
+            this.food.change(this.snake.bodies)
             // 增加分数
             this.scoreBoard.totalScore++
             // 增加身体
@@ -237,7 +237,7 @@ export default class Controller {
         this.scoreBoard.level = 1
 
         // 复位食物位置
-        this.food.change()
+        this.food.change(this.snake.bodies)
         // 绑定按键监听事件
         document.addEventListener('keydown', this.keyboardHandler.bind(this))
         // 调用开始游戏的方法
