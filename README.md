@@ -2,7 +2,7 @@
 
 [![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
-For personal study, swancai and I completed a snake game written only in typescript.
+For personal study, [@swancai](https://github.com/swancai) and I completed a snake game written only in Typescript.
 
 ## Table of Contents
 
