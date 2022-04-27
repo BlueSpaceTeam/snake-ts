@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-16 15:15:45
- * @LastEditTime: 2022-04-27 22:08:53
+ * @LastEditTime: 2022-04-27 23:04:16
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/components/Controller.ts
@@ -70,44 +70,69 @@ export default class Controller {
     keyboardHandler = (event: KeyboardEvent): void => {
         // 屏蔽非法按键
         if (
+            event.key !== 'Escape' &&
+            event.key !== 'Enter' &&
+            event.key !== ' ' &&
             event.key !== 'ArrowUp' &&
             event.key !== 'ArrowDown' &&
             event.key !== 'ArrowLeft' &&
             event.key !== 'ArrowRight'
         ) return
 
-        /**
-         * 不允许调头的判断
-         * 如果有蛇身，且第一节蛇身的位置和蛇头要移动的位置相等，则判定为调头动作
-         */
-        // 可以转向的开关
-        let canChangeDirection: boolean = true
-        // 如果有身体，则限制调头
-        if (this.snake.bodies[1]) {
-            switch (this.direction) {
-                case 'ArrowUp':
-                    // 如果前一个方向是向下，则不能向上
-                    canChangeDirection = event.key === 'ArrowDown' ? false : true
+        if (event.key === 'Escape' ||
+            event.key === 'Enter' ||
+            event.key === ' '
+        ) {
+            switch (event.key) {
+                case 'Escape':
+                    this.modal.hideModal()
                     break
-                case 'ArrowDown':
-                    // 如果前一个方向是向上，则不能向下
-                    canChangeDirection = event.key === 'ArrowUp' ? false : true
-                    break
-                case 'ArrowLeft':
-                    // 如果前一个方向是向右，则不能向左
-                    canChangeDirection = event.key === 'ArrowRight' ? false : true
-                    break
-                case 'ArrowRight':
-                    // 如果前一个方向是向左，则不能向右
-                    canChangeDirection = event.key === 'ArrowLeft' ? false : true
+                case 'Enter':
+                case ' ':
+                    this.modal.hideModal()
+                    this.replayHandler()
                     break
             }
         }
 
-        // 根据开关来修改方向
-        if (!this.isGameOver && canChangeDirection) {
-            this.direction = event.key
-            this.move()
+        if (event.key === 'ArrowUp' ||
+            event.key === 'ArrowDown' ||
+            event.key === 'ArrowLeft' ||
+            event.key === 'ArrowRight'
+        ) {
+            /**
+             * 不允许调头的判断
+             * 如果有蛇身，且第一节蛇身的位置和蛇头要移动的位置相等，则判定为调头动作
+             */
+            // 可以转向的开关
+            let canChangeDirection: boolean = true
+            // 如果有身体，则限制调头
+            if (this.snake.bodies[1]) {
+                switch (this.direction) {
+                    case 'ArrowUp':
+                        // 如果前一个方向是向下，则不能向上
+                        canChangeDirection = event.key === 'ArrowDown' ? false : true
+                        break
+                    case 'ArrowDown':
+                        // 如果前一个方向是向上，则不能向下
+                        canChangeDirection = event.key === 'ArrowUp' ? false : true
+                        break
+                    case 'ArrowLeft':
+                        // 如果前一个方向是向右，则不能向左
+                        canChangeDirection = event.key === 'ArrowRight' ? false : true
+                        break
+                    case 'ArrowRight':
+                        // 如果前一个方向是向左，则不能向右
+                        canChangeDirection = event.key === 'ArrowLeft' ? false : true
+                        break
+                }
+            }
+
+            // 根据开关来修改方向
+            if (!this.isGameOver && canChangeDirection) {
+                this.direction = event.key
+                this.move()
+            }
         }
     }
 
