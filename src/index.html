@@ -1,13 +1,13 @@
 <!--
  * @Author: fantiga
  * @Date: 2022-04-18 10:50:04
- * @LastEditTime: 2022-04-27 19:00:11
+ * @LastEditTime: 2022-04-27 21:00:54
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/index.html
 -->
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -18,6 +18,12 @@
 
 <body>
     <div class="wrapper">
+        <header>
+            <h1>Snake</h1>
+            <h4>Writen by Typescript</h4>
+            <h5>Author: fantiga / swancai</h5>
+            <h5>Version: v1.0 2022-04-27</h5>
+        </header>
         <div id="stage">
             <!-- 蛇 -->
             <div id="snake">
@@ -31,19 +37,19 @@
                 <div class="bone"></div>
             </div>
         </div>
-        <div class="score-board">
+        <footer class="score-board">
             <div class="row">
                 <div class="item">SCORE: <span id="score">0</span></div>
                 <div class="item">LEVEL: <span id="level">1</span></div>
             </div>
             <div class="row">
                 <div class="item">BEST SCORE: <span id="best">0</span></div>
-                <div class="item" id="timer">00:00:00</div>
+                <time class="item" id="timer">00:00:00</time>
             </div>
-        </div>
+        </footer>
     </div>
 
-    <div class="modal" id="modal">
+    <dialog class="modal" id="modal">
         <div class="mask" id="mask"></div>
         <div class="main" id="main">
             <div id="title">Game over</div>
@@ -54,7 +60,7 @@
                 <button class="btn btn-replay" id="btn-replay">Replay</button>
             </div>
         </div>
-    </div>
+    </dialog>
 </body>
 
 </html>

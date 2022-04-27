@@ -13,6 +13,10 @@ body {
     border          : 6px solid $main-color;
     background-color: $bg-color;
     border-radius   : 20px;
+
+    header {
+        margin         : 0 0 10px 0;text-align: center;
+    }
 }
 
 .score-board {
@@ -34,7 +38,7 @@ body {
             white-space  : nowrap;
 
             &#timer {
-                width: 6em;
+                width     : 6em;
                 text-align: right;
             }
         }
