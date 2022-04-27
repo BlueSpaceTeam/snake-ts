@@ -86,11 +86,7 @@ export default class ScoreBoard {
 		}
 	}
 
-	timerStart = (): void => {
-		this.timer = window.setInterval(this.timerHandler, 1000)
-	}
-
-	timerHandler = (): void => {
+	private timerHandler = (): void => {
 		this.second++
 		if (this.second >= 60) {
 			this.second = 0
@@ -105,6 +101,9 @@ export default class ScoreBoard {
 			+ ':' + this.second.toString().padStart(2, '0')
 	}
 
+	timerStart = (): void => {
+		this.timer = window.setInterval(this.timerHandler, 1000)
+	}
 	timerStop = (): void => {
 		window.clearInterval(this.timer)
 	}

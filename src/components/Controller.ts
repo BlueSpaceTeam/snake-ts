@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-16 15:15:45
- * @LastEditTime: 2022-04-27 19:11:58
+ * @LastEditTime: 2022-04-27 19:37:53
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/components/Controller.ts
@@ -19,7 +19,7 @@ export default class Controller {
     snake: Snake
     scoreBoard: ScoreBoard
     modal: Modal
-
+    // 游戏定时调用ID
     start: number
 
     /**
@@ -36,7 +36,7 @@ export default class Controller {
         this.snake = new Snake()
         this.scoreBoard = new ScoreBoard()
         this.modal = new Modal()
-
+        // 游戏定时调用ID
         this.start = 0
 
         // 调用初始化方法
@@ -49,10 +49,9 @@ export default class Controller {
         const gameStage: HTMLElement = document.getElementById('stage')!
         gameStage.style.width = GAME_WIDTH + 'px'
         gameStage.style.height = GAME_HEIGHT + 'px'
-
         // 显示历史最高分
         this.scoreBoard.elBest.innerText = this.scoreBoard.best + ''
-
+        // 改变食物位置
         this.food.change()
 
         /**
@@ -61,7 +60,6 @@ export default class Controller {
          * 如果需要给Controller本身绑定，则一定要加bind，bind实际上是创建了一个新的函数
          */
         document.addEventListener('keydown', this.keyboardHandler.bind(this))
-
         // 调用startGame，开始定时调用
         this.startGame()
         // 调用游戏计时器
@@ -70,13 +68,6 @@ export default class Controller {
 
     // 键盘事件响应
     keyboardHandler = (event: KeyboardEvent): void => {
-        /**
-         * 不允许调头的判断
-         * 如果有蛇身，且第一节蛇身的位置和蛇头要移动的位置相等，则判定为调头动作
-         */
-        // 可以转向的开关
-        let canChangeDirection: boolean = true
-
         // 屏蔽非法按键
         if (
             event.key !== 'ArrowUp' &&
@@ -85,6 +76,12 @@ export default class Controller {
             event.key !== 'ArrowRight'
         ) return
 
+        /**
+         * 不允许调头的判断
+         * 如果有蛇身，且第一节蛇身的位置和蛇头要移动的位置相等，则判定为调头动作
+         */
+        // 可以转向的开关
+        let canChangeDirection: boolean = true
         // 如果有身体，则限制调头
         if (this.snake.bodies[1]) {
             switch (this.direction) {
@@ -181,7 +178,9 @@ export default class Controller {
 
     // 开启定时调用
     startGame = (): void => {
+        // 调用蛇移动的方法
         this.move()
+        // 判断如果isGameOver为false，则开启定时调用，否则清空定时调用
         if (!this.isGameOver) {
             this.start = window.setTimeout(this.startGame.bind(this), 500 - (this.scoreBoard.level - 1) * (500 / DEFAULT_MAX_LEVEL))
         } else {
@@ -199,7 +198,6 @@ export default class Controller {
             this.scoreBoard.totalScore++
             // 增加身体
             this.snake.addBody()
-
             // 判断是否最高分
             if (this.scoreBoard.totalScore > this.scoreBoard.best) {
                 this.scoreBoard.best = this.scoreBoard.totalScore
@@ -210,26 +208,41 @@ export default class Controller {
 
     // 重新开始的方法
     replayHandler = (): void => {
+        // 解绑按键监听事件
         document.removeEventListener('keydown', this.keyboardHandler.bind(this))
+        // 清空定时调用
         window.clearTimeout(this.start)
         this.start = 0
+        // 复位游戏计时器
         this.scoreBoard.timerReset()
 
+        // 复位蛇身
         this.snake.el.innerHTML = '<div class="section"><div class="bone"></div></div>'
+        // 复位蛇当前前进的方向
         this.direction = 'ArrowRight'
+        // 复位蛇的坐标
         this.snake.X = 0
         this.snake.Y = 0
+        // 复位蛇头转向的方向
         this.snake.head.style.transform = 'rotate(90deg)'
+        // 复位游戏结束标记
         this.isGameOver = false
+        // 重新初始化蛇和食物的实例对象
         this.food = new Food()
         this.snake = new Snake()
 
+        // 复位总分
         this.scoreBoard.totalScore = 0
+        // 复位等级
         this.scoreBoard.level = 1
 
+        // 复位食物位置
         this.food.change()
+        // 绑定按键监听事件
         document.addEventListener('keydown', this.keyboardHandler.bind(this))
+        // 调用开始游戏的方法
         this.startGame()
+        // 游戏计时器开始
         this.scoreBoard.timerStart()
     }
 }
