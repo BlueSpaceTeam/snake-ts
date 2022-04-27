@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-16 15:15:45
- * @LastEditTime: 2022-04-27 18:32:33
+ * @LastEditTime: 2022-04-27 19:00:45
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/components/Controller.ts
@@ -22,9 +22,6 @@ export default class Controller {
 
     start: number
 
-    // replay的HTML元素，可删
-    replay: HTMLElement
-
     /**
      * 移动方向，keydown的值。
      * 值为''则游戏开始后不动，按方向键才动。
@@ -41,14 +38,9 @@ export default class Controller {
         this.modal = new Modal()
 
         this.start = 0
-        // 获取replay的HTML元素，可删
-        this.replay = document.getElementById('replay')!
 
         // 调用初始化方法
         this.init()
-        // 监听replay按钮的click事件，可删
-        this.replay.addEventListener('click', this.replayHandler.bind(this))
-
     }
 
     // 游戏初始化方法，调用即开始游戏
@@ -70,8 +62,8 @@ export default class Controller {
          */
         document.addEventListener('keydown', this.keyboardHandler.bind(this))
 
-        // 调用move，开始移动
-        this.move()
+        // 调用startGame，开始定时调用
+        this.startGame()
         // 调用游戏计时器
         this.scoreBoard.timerStart()
     }
@@ -108,6 +100,7 @@ export default class Controller {
         // 根据开关来修改方向
         if (canChangeDirection) {
             this.direction = event.key
+            this.move()
         }
     }
 
@@ -174,10 +167,13 @@ export default class Controller {
                 }
             })
         }
+    }
 
-        // 开启定时调用
+    // 开启定时调用
+    startGame = (): void => {
+        this.move()
         if (!this.isGameOver) {
-            this.start = window.setTimeout(this.move.bind(this), 500 - (this.scoreBoard.level - 1) * (500 / DEFAULT_MAX_LEVEL))
+            this.start = window.setTimeout(this.startGame.bind(this), 500 - (this.scoreBoard.level - 1) * (500 / DEFAULT_MAX_LEVEL))
         } else {
             window.clearTimeout(this.start)
             this.start = 0
@@ -223,7 +219,7 @@ export default class Controller {
 
         this.food.change()
         document.addEventListener('keydown', this.keyboardHandler.bind(this))
-        this.move()
+        this.startGame()
         this.scoreBoard.timerStart()
     }
 }
