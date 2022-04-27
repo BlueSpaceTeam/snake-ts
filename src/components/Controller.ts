@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-16 15:15:45
- * @LastEditTime: 2022-04-27 23:04:16
+ * @LastEditTime: 2022-04-27 23:12:47
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/components/Controller.ts
@@ -85,12 +85,11 @@ export default class Controller {
         ) {
             switch (event.key) {
                 case 'Escape':
-                    this.modal.hideModal()
+                    this.modal.elCancelBtn.click()
                     break
                 case 'Enter':
                 case ' ':
-                    this.modal.hideModal()
-                    this.replayHandler()
+                    this.modal.elReplayBtn.click()
                     break
             }
         }
