@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-16 13:34:29
- * @LastEditTime: 2022-04-25 21:28:20
+ * @LastEditTime: 2022-04-27 21:38:47
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/components/Snake.ts
@@ -43,7 +43,7 @@ export default class Snake {
          * 判断撞墙
          * 值的范围要在 0 和 GAME_WIDTH 之间
          */
-        if (value < 0 || value > GAME_WIDTH) {
+        if (value < 0 || value >= GAME_WIDTH) {
             throw new Error('You bumped the wall!')
         }
 
@@ -66,7 +66,7 @@ export default class Snake {
          * 判断撞墙
          * 值的范围要在 0 和 GAME_HEIGHT 之间
          */
-        if (value < 0 || value > GAME_HEIGHT) {
+        if (value < 0 || value >= GAME_HEIGHT) {
             throw new Error('You bumped the wall!')
         }
 
