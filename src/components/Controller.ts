@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-16 15:15:45
- * @LastEditTime: 2022-04-27 19:37:53
+ * @LastEditTime: 2022-04-27 20:47:42
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/components/Controller.ts
@@ -105,7 +105,7 @@ export default class Controller {
         }
 
         // 根据开关来修改方向
-        if (canChangeDirection) {
+        if (!this.isGameOver && canChangeDirection) {
             this.direction = event.key
             this.move()
         }
