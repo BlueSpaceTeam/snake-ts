@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-16 15:15:45
- * @LastEditTime: 2022-04-26 16:20:02
+ * @LastEditTime: 2022-04-27 18:32:33
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/components/Controller.ts
@@ -21,6 +21,8 @@ export default class Controller {
     modal: Modal
 
     start: number
+
+    // replay的HTML元素，可删
     replay: HTMLElement
 
     /**
@@ -39,10 +41,12 @@ export default class Controller {
         this.modal = new Modal()
 
         this.start = 0
+        // 获取replay的HTML元素，可删
         this.replay = document.getElementById('replay')!
 
         // 调用初始化方法
         this.init()
+        // 监听replay按钮的click事件，可删
         this.replay.addEventListener('click', this.replayHandler.bind(this))
 
     }
@@ -68,6 +72,8 @@ export default class Controller {
 
         // 调用move，开始移动
         this.move()
+        // 调用游戏计时器
+        this.scoreBoard.timerStart()
     }
 
     // 键盘事件响应
@@ -153,10 +159,8 @@ export default class Controller {
         } catch (error) {
             // 出现异常，游戏结束
             this.isGameOver = true
+            this.scoreBoard.timerStop()
 
-            // if (confirm((error as Error).message + 'Replay?')) {
-            //     this.replayHandler.bind(this)
-            // }
             this.modal.showModal({
                 title: '[GAME OVER]',
                 content: (error as Error).message,
@@ -203,6 +207,7 @@ export default class Controller {
         document.removeEventListener('keydown', this.keyboardHandler.bind(this))
         window.clearTimeout(this.start)
         this.start = 0
+        this.scoreBoard.timerReset()
 
         this.snake.el.innerHTML = '<div class="section"><div class="bone"></div></div>'
         this.direction = 'ArrowRight'
@@ -219,5 +224,6 @@ export default class Controller {
         this.food.change()
         document.addEventListener('keydown', this.keyboardHandler.bind(this))
         this.move()
+        this.scoreBoard.timerStart()
     }
 }

@@ -16,11 +16,11 @@ body {
 }
 
 .score-board {
-    display           : flex;
-    flex-wrap         : wrap;
-    padding           : 2vh 0;
-    font-size         : 3vw;
-    font-family       : 'Pangolin', 'Comic Sans MS';
+    display    : flex;
+    flex-wrap  : wrap;
+    padding    : 2vh 0;
+    font-size  : 2vw;
+    font-family: 'Pangolin', 'Comic Sans MS';
 
     .row {
         flex-basis     : 100%;
@@ -32,6 +32,11 @@ body {
             overflow     : hidden;
             text-overflow: ellipsis;
             white-space  : nowrap;
+
+            &#timer {
+                width: 6em;
+                text-align: right;
+            }
         }
     }
 

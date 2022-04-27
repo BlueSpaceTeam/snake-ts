@@ -21,15 +21,25 @@ export default class ScoreBoard {
 	private _level: number = 0 // 等级
 	private _speed: number // 速度。等级level = 函数f(分数score, 速度speed)
 	private _maxLevel: number // 最大等级
+	second: number
+	minute: number
+	hour: number
+	timer: number
 
 	elScore: HTMLElement = document.getElementById('score')! // 总分元素Dom对象
 	elLevel: HTMLElement = document.getElementById('level')!// 等级元素Dom对象
 	elBest: HTMLElement = document.getElementById('best')!// 最高分元素Dom对象
+	elTime: HTMLElement = document.getElementById('timer')!// 最高分元素Dom对象
 
 
 	constructor(speed: number = DEFAULT_LEVEL_SPEED, maxLevel: number = DEFAULT_MAX_LEVEL) {
 		this._maxLevel = maxLevel
 		this._speed = speed
+		this.elTime.innerText = '00:00:00'
+		this.second = 0
+		this.minute = 0
+		this.hour = 0
+		this.timer = 0
 	}
 
 	get totalScore(): number { // 获取总分
@@ -58,6 +68,13 @@ export default class ScoreBoard {
 		this.elBest.innerText = newVal + ''
 	}
 
+	get time(): number { // 获取游戏时间
+		return localStorage.getItem('best') === null ? 0 : Number(localStorage.getItem('best'))
+	}
+	set time(newVal: number) { // 设置游戏时间
+		localStorage.setItem('best', newVal + '')
+		this.elBest.innerText = newVal + ''
+	}
 	private handleLevelMap(totalScore: number = 0): void { // 处理等级规则
 		const { _speed, _maxLevel } = this
 
@@ -67,5 +84,34 @@ export default class ScoreBoard {
 				break
 			}
 		}
+	}
+
+	timerStart = (): void => {
+		this.timer = window.setInterval(this.timerHandler, 1000)
+	}
+
+	timerHandler = (): void => {
+		this.second++
+		if (this.second >= 60) {
+			this.second = 0
+			this.minute++
+		}
+		if (this.minute >= 60) {
+			this.minute = 0
+			this.hour++
+		}
+		this.elTime.innerText = this.hour.toString().padStart(2, '0')
+			+ ':' + this.minute.toString().padStart(2, '0')
+			+ ':' + this.second.toString().padStart(2, '0')
+	}
+
+	timerStop = (): void => {
+		window.clearInterval(this.timer)
+	}
+
+	timerReset = (): void => {
+		window.clearInterval(this.timer)
+		this.hour = this.minute = this.second = 0
+		this.elTime.innerText = '00:00:00'
 	}
 }
