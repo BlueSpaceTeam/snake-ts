@@ -212,7 +212,9 @@ export default class Controller {
         this.isGameOver = false
         this.food = new Food()
         this.snake = new Snake()
-        this.scoreBoard = new ScoreBoard()
+
+        this.scoreBoard.totalScore = 0
+        this.scoreBoard.level = 1
 
         this.food.change()
         document.addEventListener('keydown', this.keyboardHandler.bind(this))
