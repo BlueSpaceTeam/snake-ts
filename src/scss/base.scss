@@ -23,7 +23,7 @@ input::-webkit-input-speech-button {display: none;}
 button,input,textarea{
 -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
-button{
+button,dialog{
     padding: 0;
 }
 button{background: transparent;}

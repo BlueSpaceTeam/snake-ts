@@ -1,7 +1,7 @@
 <!--
  * @Author: fantiga
  * @Date: 2022-04-18 10:50:04
- * @LastEditTime: 2022-04-28 10:05:50
+ * @LastEditTime: 2022-04-28 10:13:26
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/index.html
@@ -17,50 +17,52 @@
 </head>
 
 <body>
-    <div class="wrapper">
-        <header>
-            <h1>Snake</h1>
-            <h4>Written in Typescript</h4>
-            <h5>Author: fantiga / swancai</h5>
-            <h5>Version: v1.0 2022-04-28</h5>
-        </header>
-        <div id="stage">
-            <!-- 蛇 -->
-            <div id="snake">
-                <!-- 每个一级div表示蛇的每一节 -->
-                <div class="section">
+    <div id="container">
+        <div class="wrapper">
+            <header>
+                <h1>Snake</h1>
+                <h4>Written in Typescript</h4>
+                <h5>Author: fantiga / swancai</h5>
+                <h5>Version: v1.0 2022-04-28</h5>
+            </header>
+            <div id="stage">
+                <!-- 蛇 -->
+                <div id="snake">
+                    <!-- 每个一级div表示蛇的每一节 -->
+                    <div class="section">
+                        <div class="bone"></div>
+                    </div>
+                </div>
+
+                <div id="food" class="section">
                     <div class="bone"></div>
                 </div>
             </div>
-
-            <div id="food" class="section">
-                <div class="bone"></div>
-            </div>
+            <footer class="score-board">
+                <div class="row">
+                    <div class="item">SCORE: <span id="score">0</span></div>
+                    <div class="item">LEVEL: <span id="level">1</span></div>
+                </div>
+                <div class="row">
+                    <div class="item">BEST SCORE: <span id="best">0</span></div>
+                    <time class="item" id="timer">00:00:00</time>
+                </div>
+            </footer>
         </div>
-        <footer class="score-board">
-            <div class="row">
-                <div class="item">SCORE: <span id="score">0</span></div>
-                <div class="item">LEVEL: <span id="level">1</span></div>
+
+        <dialog class="modal" id="modal">
+            <div class="mask" id="mask"></div>
+            <div class="main" id="main">
+                <div id="title">Game over</div>
+                <div id="content">You has got 500</div>
+                <div id="sub-content">your best score is 1000</div>
+                <div class="operation">
+                    <button class="btn btn-cancel" id="btn-cancel">Cancel<br />(Esc)</button>
+                    <button class="btn btn-replay" id="btn-replay">Replay<br />(Enter / Space)</button>
+                </div>
             </div>
-            <div class="row">
-                <div class="item">BEST SCORE: <span id="best">0</span></div>
-                <time class="item" id="timer">00:00:00</time>
-            </div>
-        </footer>
+        </dialog>
     </div>
-
-    <dialog class="modal" id="modal">
-        <div class="mask" id="mask"></div>
-        <div class="main" id="main">
-            <div id="title">Game over</div>
-            <div id="content">You has got 500</div>
-            <div id="sub-content">your best score is 1000</div>
-            <div class="operation">
-                <button class="btn btn-cancel" id="btn-cancel">Cancel<br />(Esc)</button>
-                <button class="btn btn-replay" id="btn-replay">Replay<br />(Enter / Space)</button>
-            </div>
-        </div>
-    </dialog>
 </body>
 
 </html>
