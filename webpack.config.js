@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-14 21:56:08
- * @LastEditTime: 2022-04-27 23:22:03
+ * @LastEditTime: 2022-04-28 10:06:13
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/webpack.config.js
@@ -17,7 +17,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const config = {
     // 指定打包模式：'none' | 'development' | 'production'
-    mode: 'none',
+    mode: 'production',
     // 指定入口文件
     entry: './src/index.ts',
     // 指定打包文件所在目录

@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-16 15:15:45
- * @LastEditTime: 2022-04-28 09:44:14
+ * @LastEditTime: 2022-04-28 09:51:38
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/components/Controller.ts
@@ -59,8 +59,7 @@ export default class Controller {
          * this.keyboardHandler中的this，是document对象
          * 如果需要给Controller本身绑定，则一定要加bind，bind实际上是创建了一个新的函数
          */
-        window.onkeydown = this.keyboardHandler.bind(this)
-        // document.addEventListener('keydown', this.keyboardHandler.bind(this), false)
+        document.onkeydown = this.keyboardHandler.bind(this)
         // 调用startGame，开始定时调用
         this.startGame()
         // 调用游戏计时器
@@ -239,8 +238,6 @@ export default class Controller {
 
     // 重新开始的方法
     replayHandler = (): void => {
-        // 解绑按键监听事件
-        // document.removeEventListener('keydown', this.keyboardHandler.bind(this), false)
         // 清空定时调用
         window.clearTimeout(this.start)
         this.start = 0
@@ -270,8 +267,7 @@ export default class Controller {
         // 复位食物位置
         this.food.change(this.snake.bodies)
         // 绑定按键监听事件
-        window.onkeydown = this.keyboardHandler.bind(this)
-        // document.addEventListener('keydown', this.keyboardHandler.bind(this), false)
+        document.onkeydown = this.keyboardHandler.bind(this)
         // 调用开始游戏的方法
         this.startGame()
         // 游戏计时器开始
