@@ -14,7 +14,7 @@ For personal study, [@swancai](https://github.com/swancai) and I completed a sna
 ## Usage
 
 
-1. Open [https://fantiga.github.io/snake-ts/dist/](https://fantiga.github.io/snake-ts/dist/), it starts as soon as the page loads.
+1. Open [https://bluespaceteam.github.io/snake-ts/dist/](https://bluespaceteam.github.io/snake-ts/dist/), it starts as soon as the page loads.
 2. Use the `arrow keys` to control/accelerate the moving direction of the snake.
 3. After the game is over, press `Enter/Space` to restart the game, and press `Esc` to cancel the popup.
 4. The default width of the game is `320px` and the height is `320px`, and the game is upgraded by `1` level every `10` minutes, up to `10` levels. Can be set in `constant.ts`.
@@ -30,4 +30,4 @@ For personal study, [@swancai](https://github.com/swancai) and I completed a sna
 
 ## License
 
-[MIT](LICENSE)  © 2022 FantiGA
+[MIT](LICENSE)  © 2022 [@BlueSpaceTeam](https://github.com/BlueSpaceTeam)

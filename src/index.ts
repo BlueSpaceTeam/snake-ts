@@ -1,31 +1,16 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-14 22:01:46
- * @LastEditTime: 2022-04-24 10:50:38
+ * @LastEditTime: 2022-06-09 21:16:44
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/index.ts
  */
 
 import Controller from './components/Controller'
-// import Modal from './components/Modal'
 
 import './scss/base.scss'
 import './scss/snake.scss'
 import './scss/modal.scss'
 
 new Controller()
-
-
-// let modal = new Modal()
-
-// modal.showModal({
-//     title: '你好',
-//     content: 'hahah',
-//     success: (b = '') => {
-//         if (b === 'replay') {} else {}
-//     },
-//     fail: (err: any) => {
-//         console.error(err)
-//     }
-// })
