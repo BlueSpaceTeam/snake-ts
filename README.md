@@ -6,10 +6,12 @@ For personal study, [@swancai](https://github.com/swancai) and I completed a sna
 
 ## Table of Contents
 
-- [Usage](#usage)
-- [Maintainers](#maintainers)
-- [Contributing](#contributing)
-- [License](#license)
+- [snake-ts](#snake-ts)
+  - [Table of Contents](#table-of-contents)
+  - [Usage](#usage)
+  - [Maintainers](#maintainers)
+  - [Contributing](#contributing)
+  - [License](#license)
 
 ## Usage
 
@@ -30,4 +32,4 @@ For personal study, [@swancai](https://github.com/swancai) and I completed a sna
 
 ## License
 
-[MIT](LICENSE)  © 2022 [@BlueSpaceTeam](https://github.com/BlueSpaceTeam)
+[MIT](LICENSE)  © 2022 - Present [@BlueSpaceTeam](https://github.com/BlueSpaceTeam)

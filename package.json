@@ -11,8 +11,8 @@
     "@babel/preset-typescript": "^7.16.7",
     "async": "^3.2.3",
     "portfinder": "^1.0.28",
-    "source-map-loader": "^3.0.1",
-    "web-vitals": "^2.1.4",
+    "source-map-loader": "^4.0.1",
+    "web-vitals": "^3.1.1",
     "webpack-dev-server": "^4.8.1"
   },
   "scripts": {
@@ -34,22 +34,22 @@
   "devDependencies": {
     "@babel/core": "^7.17.8",
     "@babel/preset-env": "^7.16.11",
-    "babel-loader": "^8.2.4",
+    "babel-loader": "^9.1.2",
     "clean-webpack-plugin": "^4.0.0",
     "core-js": "^3.21.1",
     "css-loader": "^6.7.1",
     "html-webpack-plugin": "^5.5.0",
     "less": "^4.1.2",
-    "less-loader": "^10.2.0",
+    "less-loader": "^11.1.0",
     "postcss": "^8.4.12",
-    "postcss-loader": "^6.2.1",
-    "postcss-preset-env": "^7.4.3",
+    "postcss-loader": "^7.0.2",
+    "postcss-preset-env": "^8.0.1",
     "sass": "^1.50.0",
-    "sass-loader": "^12.6.0",
+    "sass-loader": "^13.2.0",
     "style-loader": "^3.3.1",
     "ts-loader": "^9.2.8",
     "typescript": "^4.6.3",
     "webpack": "^5.72.0",
-    "webpack-cli": "^4.9.2"
+    "webpack-cli": "^5.0.1"
   }
 }
