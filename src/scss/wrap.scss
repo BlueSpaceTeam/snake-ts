@@ -2,53 +2,53 @@ $main-color : #000;
 $bg-color   : #abcb9b;
 
 body {
-    overflow-x: hidden;
-    overflow-y: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 #container {
-    display        : flex;
-    justify-content: center;
-    align-items    : center;
-    height         : 90vh;
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  height         : 90vh;
 }
 
 .wrapper {
-    padding         : 20px 20px 0;
-    width           : fit-content;
-    border          : 6px solid $main-color;
-    background-color: $bg-color;
-    border-radius   : 20px;
+  padding         : 20px 20px 0;
+  width           : fit-content;
+  border          : 6px solid $main-color;
+  background-color: $bg-color;
+  border-radius   : 20px;
 
-    header {
-        margin    : 0 0 10px 0;
-        text-align: center;
-    }
+  header {
+    margin    : 0 0 10px 0;
+    text-align: center;
+  }
 }
 
 .score-board {
-    display    : flex;
-    flex-wrap  : wrap;
-    padding    : 16px 0 24px;
-    font-size  : 15px;
-    font-family: 'Pangolin', 'Comic Sans MS';
+  display    : flex;
+  flex-wrap  : wrap;
+  padding    : 16px 0 24px;
+  font-size  : 15px;
+  font-family: 'Pangolin', 'Comic Sans MS';
 
-    .row {
-        flex-basis     : 100%;
-        display        : flex;
-        justify-content: space-between;
+  .row {
+    flex-basis     : 100%;
+    display        : flex;
+    justify-content: space-between;
 
-        .item {
-            max-width    : 48%;
-            overflow     : hidden;
-            text-overflow: ellipsis;
-            white-space  : nowrap;
+    .item {
+      max-width    : 48%;
+      overflow     : hidden;
+      text-overflow: ellipsis;
+      white-space  : nowrap;
 
-            &#timer {
-                width     : 48%;
-                text-align: right;
-            }
-        }
+      &#timer {
+        width     : 48%;
+        text-align: right;
+      }
     }
+  }
 
 }

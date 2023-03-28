@@ -1,97 +1,99 @@
-$bg-color   : #abcb9b;
+$bg-color : #abcb9b;
+
 .modal {
-    display: none;
-    pointer-events: none;
-    background-color: transparent;
+  display         : none;
+  pointer-events  : none;
+  background-color: transparent;
 
-    .mask {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba($color: #212121, $alpha: 0.5);
-        opacity: 0;
-        transition: all 0.2s;
+  .mask {
+    position  : absolute;
+    top       : 0;
+    left      : 0;
+    width     : 100%;
+    height    : 100%;
+    background: rgba($color: #212121, $alpha: 0.5);
+    opacity   : 0;
+    transition: all 0.2s;
 
-        &.trans-show {
-            opacity: 1;
-        }
+    &.trans-show {
+      opacity: 1;
     }
+  }
 
-    .main {
-        overflow: hidden;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 300px;
-        opacity: 0;
-        transition: all 0.2s;
-        border-radius: 4px;
-        background: $bg-color;
-        transform: translate(-50%, -50%);
+  .main {
+    overflow     : hidden;
+    position     : absolute;
+    top          : 50%;
+    left         : 50%;
+    width        : 300px;
+    opacity      : 0;
+    transition   : all 0.2s;
+    border-radius: 4px;
+    background   : $bg-color;
+    transform    : translate(-50%, -50%);
 
-        &.trans-show {
-            opacity: 1;
-        }
+    &.trans-show {
+      opacity: 1;
     }
+  }
 
-    &.show {
-        z-index: 999;
-        display: block;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: auto;
-    }
+  &.show {
+    z-index       : 999;
+    display       : block;
+    position      : fixed;
+    top           : 0;
+    left          : 0;
+    width         : 100%;
+    height        : 100%;
+    pointer-events: auto;
+  }
 
-    #title {
-        box-sizing: content-box;
-        padding-top: 10px;
-        height: 40px;
-        line-height: 40px;
-        font-size:17px;
-        font-weight: 500;
-        text-align: center;
-    }
+  #title {
+    box-sizing : content-box;
+    padding-top: 10px;
+    height     : 40px;
+    line-height: 40px;
+    font-size  : 17px;
+    font-weight: 500;
+    text-align : center;
+  }
 
-    #content,
-    #sub-content {
-        padding: 0 20px;
-    }
+  #content,
+  #sub-content {
+    padding: 0 20px;
+  }
 
-    #content {
-        margin-top: 12px;
-        font-size: 15px;
-        color: #212121;
-    }
+  #content {
+    margin-top: 12px;
+    font-size : 15px;
+    color     : #212121;
+  }
 
-    #sub-content {
-        margin-top: 20px;
-        font-size: 13px;
-        color: #757575;
-    }
+  #sub-content {
+    margin-top: 20px;
+    font-size : 13px;
+    color     : #757575;
+  }
 
 
-    .operation {
-        display: flex;
-        margin-top: 12px;
-        border-top: 1px solid #757575;
-    }
-    .btn {
-        flex: 1;
-        height: 50px;
-        border: none;
-    }
+  .operation {
+    display   : flex;
+    margin-top: 12px;
+    border-top: 1px solid #757575;
+  }
 
-    .btn-replay {
-        color: #000;
-        font-weight: 600;
-    }
+  .btn {
+    flex  : 1;
+    height: 50px;
+    border: none;
+  }
 
-    .btn-cancel {
-        color: #212121;
-    }
+  .btn-replay {
+    color      : #000;
+    font-weight: 600;
+  }
+
+  .btn-cancel {
+    color: #212121;
+  }
 }

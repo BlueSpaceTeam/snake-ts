@@ -1,63 +1,65 @@
 @import './wrap.scss';
 
 #stage {
-    box-sizing: content-box;
-    margin    : 0 auto;
-    border    : 3px solid $main-color;
+  box-sizing: content-box;
+  margin    : 0 auto;
+  border    : 3px solid $main-color;
 
-    position: relative;
+  position: relative;
 }
 
 
 // common 每一节
 .section {
-    position: absolute;
-    padding: 1px;
+  position: absolute;
+  padding : 1px;
 
-    .bone {
-        box-sizing      : border-box;
-        width           : 8px;
-        height          : 8px;
-        border          : 1px solid $main-color;
-        display         : flex;
-        justify-content : center;
-        align-items     : center;
+  .bone {
+    box-sizing     : border-box;
+    width          : 8px;
+    height         : 8px;
+    border         : 1px solid $main-color;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
 
-        &::before {
-            content         : '';
-            width           : 4px;
-            height          : 4px;
-            background-color: $main-color;
-        }
+    &::before {
+      content         : '';
+      width           : 4px;
+      height          : 4px;
+      background-color: $main-color;
     }
+  }
 }
 
 // 蛇
 #snake,
 #food {
-    position: absolute;
+  position: absolute;
 }
 
 // 蛇
 #snake {
-    // 蛇的每一节
-    .section {
-        // 蛇头
-        &:first-child {
-            transform: rotate(90deg);
 
-            .bone {
-                justify-content: space-around;
-                align-items    : flex-start;
+  // 蛇的每一节
+  .section {
 
-                &::before,
-                &::after {
-                    content         : '';
-                    width           : 2px;
-                    height          : 2px;
-                    background-color: $main-color;
-                }
-            }
+    // 蛇头
+    &:first-child {
+      transform: rotate(90deg);
+
+      .bone {
+        justify-content: space-around;
+        align-items    : flex-start;
+
+        &::before,
+        &::after {
+          content         : '';
+          width           : 2px;
+          height          : 2px;
+          background-color: $main-color;
         }
+      }
     }
+  }
 }

@@ -1,16 +1,16 @@
 /*
  * @Author: fantiga
  * @Date: 2022-04-14 22:01:46
- * @LastEditTime: 2022-06-09 21:16:44
+ * @LastEditTime: 2023-03-28 21:57:29
  * @LastEditors: fantiga
  * @Description: 
  * @FilePath: /snake-ts/src/index.ts
  */
 
-import Controller from './components/Controller'
+import Controller from './components/Controller';
 
-import './scss/base.scss'
-import './scss/snake.scss'
-import './scss/modal.scss'
+import './scss/base.scss';
+import './scss/snake.scss';
+import './scss/modal.scss';
 
-new Controller()
+new Controller();

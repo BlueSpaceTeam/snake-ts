@@ -1,61 +1,60 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Snake Ts</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Snake Ts</title>
 <script defer="defer" src="bundle.js"></script></head>
 
 <body>
-    <div id="container">
-        <div class="wrapper">
-            <header>
-                <h1>Blue Space Snake</h1>
-                <h4>Written in Typescript</h4>
-                <h5>Author: Blue Space Team</h5>
-                <h5>Version: v1.1 2023-02-04</h5>
-            </header>
-            <div id="stage">
-                
-                <div id="snake">
-                    
-                    <div class="section">
-                        <div class="bone"></div>
-                    </div>
-                </div>
-
-                <div id="food" class="section">
-                    <div class="bone"></div>
-                </div>
-            </div>
-            <footer class="score-board">
-                <div class="row">
-                    <div class="item">SCORE: <span id="score">0</span></div>
-                    <div class="item">LEVEL: <span id="level">1</span></div>
-                </div>
-                <div class="row">
-                    <div class="item">BEST SCORE: <span id="best">0</span></div>
-                    <time class="item" id="timer">00:00:00</time>
-                </div>
-            </footer>
+  <div id="container">
+    <div class="wrapper">
+      <header>
+        <h1>Blue Space Snake</h1>
+        <h4>Written in Typescript</h4>
+        <h5>Author: Blue Space Team</h5>
+        <h5>Version: v1.1 2023-02-04</h5>
+      </header>
+      <div id="stage">
+        
+        <div id="snake">
+          
+          <div class="section">
+            <div class="bone"></div>
+          </div>
         </div>
 
-        <dialog class="modal" id="modal">
-            <div class="mask" id="mask"></div>
-            <div class="main" id="main">
-                <div id="title">Game over</div>
-                <div id="content">You has got 500</div>
-                <div id="sub-content">your best score is 1000</div>
-                <div class="operation">
-                    <button class="btn btn-cancel" id="btn-cancel">Cancel<br>(Esc)</button>
-                    <button class="btn btn-replay" id="btn-replay">Replay<br>(Enter / Space)</button>
-                </div>
-            </div>
-        </dialog>
+        <div id="food" class="section">
+          <div class="bone"></div>
+        </div>
+      </div>
+      <footer class="score-board">
+        <div class="row">
+          <div class="item">SCORE: <span id="score">0</span></div>
+          <div class="item">LEVEL: <span id="level">1</span></div>
+        </div>
+        <div class="row">
+          <div class="item">BEST SCORE: <span id="best">0</span></div>
+          <time class="item" id="timer">00:00:00</time>
+        </div>
+      </footer>
     </div>
+
+    <dialog class="modal" id="modal">
+      <div class="mask" id="mask"></div>
+      <div class="main" id="main">
+        <div id="title">Game over</div>
+        <div id="content">You has got 500</div>
+        <div id="sub-content">your best score is 1000</div>
+        <div class="operation">
+          <button class="btn btn-cancel" id="btn-cancel">Cancel<br>(Esc)</button>
+          <button class="btn btn-replay" id="btn-replay">Replay<br>(Enter / Space)</button>
+        </div>
+      </div>
+    </dialog>
+  </div>
 </body>
 
 </html>
